@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Calendar, ArrowRight } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
+import heroBackground from './assets/hero-background.jpg';
+
 
 
 
@@ -95,40 +97,40 @@ const HealthWebsite = () => {
 
       {/* Hero Section */}
       <section style={styles.heroSection}>
-        {/* Overlay for background image */}
-        <div  className="hero-overlay"></div>
-        <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
-            Modern Healthcare,
-            <br />
-            <span style={styles.heroTitleHighlight}>Personalized</span> Approach
-          </h1>
-          <p style={styles.heroParagraph}>
-            Experience exceptional care at our boutique physiotherapy studio, 
-            where modern science meets personalized wellness.
-          </p>
-          <div style={styles.heroButtons}>
-            <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-              <Button
-                style={{
-                  ...styles.heroButton,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#c53030'; // Hover: bg-red-700
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#e53e3e'; // Normal: bg-red-600
-                }}
-              >
-                Book Consultation
-              </Button>
-            </a>
-            <span style={styles.heroAppointment}>
-              By appointment only
-            </span>
-          </div>
-        </div>
-      </section>
+  {/* Overlay for background image */}
+  <div style={styles.heroOverlay}></div>
+  <div style={styles.heroContent}>
+    <h1 style={styles.heroTitle}>
+      Modern Healthcare,
+      <br />
+      <span style={styles.heroTitleHighlight}>Personalized</span> Approach
+    </h1>
+    <p style={styles.heroParagraph}>
+      Experience exceptional care at our boutique physiotherapy studio, 
+      where modern science meets personalized wellness.
+    </p>
+    <div style={styles.heroButtons}>
+      <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+        <Button
+          style={{
+            ...styles.heroButton,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#c53030';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = '#e53e3e';
+          }}
+        >
+          Book Consultation
+        </Button>
+      </a>
+      <span style={styles.heroAppointment}>
+        By appointment only
+      </span>
+    </div>
+  </div>
+</section>
 
       {/* Services Section */}
       <section style={styles.servicesSection}>
@@ -276,7 +278,6 @@ const HealthWebsite = () => {
   );
 };
 
-// Inline styles
 const styles = {
   container: {
     minHeight: '100vh',
@@ -303,33 +304,33 @@ const styles = {
     gap: '0.5rem',
   },
   navBrand: {
-    color: '#e53e3e', // text-red-600
-    fontWeight: '300', // font-light
-    fontSize: '1.25rem', // text-xl
-    letterSpacing: '0.05em', // tracking-wide
+    color: '#e53e3e',
+    fontWeight: '300',
+    fontSize: '1.25rem',
+    letterSpacing: '0.05em',
   },
   navRight: {
     display: 'flex',
     alignItems: 'center',
-    gap: '2rem', // space-x-8
+    gap: '2rem',
   },
   navLink: {
-    fontSize: '0.875rem', // text-sm
-    letterSpacing: '0.05em', // tracking-wide
-    color: '#4A5568', // text-gray-600
+    fontSize: '0.875rem',
+    letterSpacing: '0.05em',
+    color: '#4A5568',
     textDecoration: 'none',
-    transition: 'color 0.3s ease', // transition-colors duration-300
+    transition: 'color 0.3s ease',
   },
   navLinkHover: {
-    color: '#e53e3e', // text-red-600
+    color: '#e53e3e',
   },
   navButton: {
-    backgroundColor: '#e53e3e', // bg-red-600
-    color: '#ffffff', // text-white
+    backgroundColor: '#e53e3e',
+    color: '#ffffff',
     border: 'none',
-    padding: '0.75rem 1.5rem', // px-6 py-4
-    borderRadius: '9999px', // rounded-full
-    fontWeight: '500', // font-medium
+    padding: '0.75rem 1.5rem',
+    borderRadius: '9999px',
+    fontWeight: '500',
     cursor: 'pointer',
     transition: 'background-color 0.3s ease, color 0.3s ease',
     display: 'inline-flex',
@@ -342,58 +343,60 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'linear-gradient(to bottom right, #f9fafb, #ffffff)', // bg-gradient-to-br from-gray-50 to-white
-    paddingTop: '5rem', // pt-20
+    background: 'linear-gradient(to bottom right, #f9fafb, #ffffff)',
+    paddingTop: '5rem',
     textAlign: 'center',
     padding: '5rem 1.5rem',
   },
   heroOverlay: {
     position: 'absolute',
-    top: '0',
-    left: '0',
-    right: '0',
-    bottom: '0',
-    backgroundImage: `${process.env.PUBLIC_URL}/hero-background.jpg`,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage: `url(${heroBackground})`,
+    backgroundColor: 'rgba(255, 0, 0, 0.2)', // Temporary color for visibility testing
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    opacity: 0.5, // Adjust opacity as needed
-    zIndex: '-1', // Ensure it's behind the content
+    opacity: 0.5,
+    zIndex: 0,
   },
   heroContent: {
-    maxWidth: '768px', // max-w-3xl
+    maxWidth: '768px',
     margin: '0 auto',
-    gap: '2rem', // space-y-8
-    position: 'relative', // To ensure content is above the overlay
+    gap: '2rem',
+    position: 'relative',
+    zIndex: 1, // Ensures content appears above the overlay
   },
   heroTitle: {
-    fontSize: '3.75rem', // text-6xl
-    fontWeight: '300', // font-light
-    lineHeight: '1.25', // leading-tight
-    letterSpacing: '-0.025em', // tracking-tight
-    color: '#1a202c', // text-gray-900
+    fontSize: '3.75rem',
+    fontWeight: '300',
+    lineHeight: '1.25',
+    letterSpacing: '-0.025em',
+    color: '#1a202c',
   },
   heroTitleHighlight: {
-    color: '#e53e3e', // text-red-600
+    color: '#e53e3e',
   },
   heroParagraph: {
-    fontSize: '1.25rem', // text-xl
-    color: '#718096', // text-gray-600
-    fontWeight: '300', // font-light
-    letterSpacing: '0.05em', // tracking-wide
+    fontSize: '1.25rem',
+    color: '#718096',
+    fontWeight: '300',
+    letterSpacing: '0.05em',
     marginBottom: '2rem',
   },
   heroButtons: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '1rem', // space-y-4
+    gap: '1rem',
   },
   heroButton: {
-    backgroundColor: '#e53e3e', // bg-red-600
-    color: '#ffffff', // text-white
-    padding: '1.5rem 2rem', // px-8 py-6
-    fontSize: '1.125rem', // text-lg
-    borderRadius: '9999px', // rounded-full
+    backgroundColor: '#e53e3e',
+    color: '#ffffff',
+    padding: '1.5rem 2rem',
+    fontSize: '1.125rem',
+    borderRadius: '9999px',
     transition: 'background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease',
     display: 'flex',
     alignItems: 'center',
@@ -402,17 +405,14 @@ const styles = {
     cursor: 'pointer',
   },
   heroButtonIcon: {
-    marginRight: '0.5rem', // mr-2
-    height: '1rem', // h-4
-    width: '1rem', // w-4
-  },
-  heroButtonText: {
-    display: 'inline-block',
+    marginRight: '0.5rem',
+    height: '1rem',
+    width: '1rem',
   },
   heroAppointment: {
-    fontSize: '0.875rem', // text-sm
-    color: '#a0aec0', // text-gray-500
-    letterSpacing: '0.05em', // tracking-wide
+    fontSize: '0.875rem',
+    color: '#a0aec0',
+    letterSpacing: '0.05em',
   },
   servicesSection: {
     padding: '8rem 1.5rem', // py-32 px-6
