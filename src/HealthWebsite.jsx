@@ -4,6 +4,8 @@ import { MapPin, Phone, Mail, Calendar, ArrowRight } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 
+
+
 const HealthWebsite = () => {
   const services = [
     {
@@ -94,7 +96,7 @@ const HealthWebsite = () => {
       {/* Hero Section */}
       <section style={styles.heroSection}>
         {/* Overlay for background image */}
-        <div style={styles.heroOverlay}></div>
+        <div  className="hero-overlay"></div>
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
             Modern Healthcare,
@@ -351,7 +353,7 @@ const styles = {
     left: '0',
     right: '0',
     bottom: '0',
-    backgroundImage: 'url("/images/hero-background.jpg")', // Path to your image
+    backgroundImage: `${process.env.PUBLIC_URL}/hero-background.jpg`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     opacity: 0.5, // Adjust opacity as needed
