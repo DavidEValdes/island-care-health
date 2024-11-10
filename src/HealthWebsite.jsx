@@ -1,6 +1,6 @@
 // src/HealthWebsite.js
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Calendar, ArrowRight } from 'lucide-react';
+import { MapPin, Phone, Mail, Calendar, ArrowRight, ChevronDown } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
@@ -9,6 +9,29 @@ import heroBackground from './assets/hero-background.jpg';
 
 
 const HealthWebsite = () => {
+
+
+const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+
+
+
+  const clinicians = [
+    {
+      name: "Dr. Sarah Johnson",
+      title: "Lead Physical Therapist",
+      description: "Specializing in neurological rehabilitation and sports medicine with over 10 years of experience.",
+      credentials: "DPT, OCS, CSCS"
+    },
+    {
+      name: "Dr. Michael Chen",
+      title: "Senior Physical Therapist",
+      description: "Expert in manual therapy and corrective exercise, focusing on long-term rehabilitation solutions.",
+      credentials: "DPT, CMPT, FMS"
+    }
+  ];
+
+
+
   const services = [
     {
       title: "Holistic Physiotherapy",
@@ -82,10 +105,10 @@ const HealthWebsite = () => {
                 ...styles.navButton,
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#c53030'; // Hover: bg-red-700
+                e.currentTarget.style.backgroundColor = '#c53030';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#e53e3e'; // Normal: bg-red-600
+                e.currentTarget.style.backgroundColor = '#e53e3e';
               }}
             >
               <Calendar style={styles.heroButtonIcon} />
@@ -97,40 +120,78 @@ const HealthWebsite = () => {
 
       {/* Hero Section */}
       <section style={styles.heroSection}>
-  {/* Overlay for background image */}
-  <div style={styles.heroOverlay}></div>
-  <div style={styles.heroContent}>
-    <h1 style={styles.heroTitle}>
-      Modern Healthcare,
-      <br />
-      <span style={styles.heroTitleHighlight}>Personalized</span> Approach
-    </h1>
-    <p style={styles.heroParagraph}>
-      Experience exceptional care at our boutique physiotherapy studio, 
-      where modern science meets personalized wellness.
-    </p>
-    <div style={styles.heroButtons}>
-      <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-        <Button
-          style={{
-            ...styles.heroButton,
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = '#c53030';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = '#e53e3e';
-          }}
-        >
-          Book Consultation
-        </Button>
-      </a>
-      <span style={styles.heroAppointment}>
-        By appointment only
-      </span>
-    </div>
-  </div>
-</section>
+        <div style={styles.heroOverlay}></div>
+        <div style={styles.heroContent}>
+          <div style={styles.heroTextBubble}>
+            <h1 style={styles.heroTitle}>
+              Modern Healthcare,
+              <br />
+              <span style={styles.heroTitleHighlight}>Personalized</span> Approach
+            </h1>
+            <p style={styles.heroParagraph}>
+              Experience exceptional care at our boutique physiotherapy studio, 
+              where modern science meets personalized wellness.
+            </p>
+            <div style={styles.heroButtons}>
+              <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                <Button
+                  style={{
+                    ...styles.heroButton,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#c53030';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#e53e3e';
+                  }}
+                >
+                  Book Consultation
+                </Button>
+              </a>
+              <span style={styles.heroAppointment}>
+                By appointment only
+              </span>
+            </div>
+          </div>
+          <div style={styles.scrollIndicator}>
+            <ChevronDown 
+              size={40}
+              style={styles.scrollArrow}
+            />
+            <span style={styles.scrollText}>Meet Our Team</span>
+          </div>
+        </div>
+      </section>
+
+      {/* New Clinicians Section */}
+      <section style={styles.cliniciansSection}>
+        <div style={styles.cliniciansHeader}>
+          <h2 style={styles.cliniciansTitle}>Our Expert Clinicians</h2>
+          <p style={styles.cliniciansSubtitle}>
+            Dedicated professionals committed to your recovery and well-being
+          </p>
+        </div>
+
+        <div style={styles.cliniciansGrid}>
+          {clinicians.map((clinician, index) => (
+            <div key={index} style={styles.clinicianCard}>
+              <div style={styles.clinicianImageContainer}>
+                <img
+                  src={`/api/placeholder/300/300`}
+                  alt={clinician.name}
+                  style={styles.clinicianImage}
+                />
+              </div>
+              <div style={styles.clinicianInfo}>
+                <h3 style={styles.clinicianName}>{clinician.name}</h3>
+                <p style={styles.clinicianCredentials}>{clinician.credentials}</p>
+                <h4 style={styles.clinicianTitle}>{clinician.title}</h4>
+                <p style={styles.clinicianDescription}>{clinician.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Services Section */}
       <section style={styles.servicesSection}>
@@ -205,7 +266,7 @@ const HealthWebsite = () => {
             placeholder="Name"
             style={styles.contactInput}
             onFocus={(e) => {
-              e.target.style.outline = '2px solid #e53e3e'; // focus:ring-red-500
+              e.target.style.outline = '2px solid #e53e3e';
             }}
             onBlur={(e) => {
               e.target.style.outline = 'none';
@@ -216,7 +277,7 @@ const HealthWebsite = () => {
             placeholder="Email"
             style={styles.contactInput}
             onFocus={(e) => {
-              e.target.style.outline = '2px solid #e53e3e'; // focus:ring-red-500
+              e.target.style.outline = '2px solid #e53e3e';
             }}
             onBlur={(e) => {
               e.target.style.outline = 'none';
@@ -227,7 +288,7 @@ const HealthWebsite = () => {
             placeholder="Message"
             style={styles.contactTextarea}
             onFocus={(e) => {
-              e.target.style.outline = '2px solid #e53e3e'; // focus:ring-red-500
+              e.target.style.outline = '2px solid #e53e3e';
             }}
             onBlur={(e) => {
               e.target.style.outline = 'none';
@@ -236,7 +297,7 @@ const HealthWebsite = () => {
           <Button
             style={{
               ...styles.contactButton,
-              backgroundColor: isContactButtonHovered ? '#c53030' : '#e53e3e', // Toggle between bg-red-700 and bg-red-600
+              backgroundColor: isContactButtonHovered ? '#c53030' : '#e53e3e',
             }}
             onMouseEnter={() => setIsContactButtonHovered(true)}
             onMouseLeave={() => setIsContactButtonHovered(false)}
@@ -337,6 +398,11 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
   },
+  heroButtonIcon: {
+    marginRight: '0.5rem',
+    width: '1.25rem',
+    height: '1.25rem',
+  },
   heroSection: {
     position: 'relative',
     minHeight: '100vh',
@@ -355,7 +421,6 @@ const styles = {
     right: 0,
     bottom: 0,
     backgroundImage: `url(${heroBackground})`,
-    backgroundColor: 'rgba(255, 0, 0, 0.2)', // Temporary color for visibility testing
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     opacity: 0.5,
@@ -364,9 +429,20 @@ const styles = {
   heroContent: {
     maxWidth: '768px',
     margin: '0 auto',
-    gap: '2rem',
     position: 'relative',
-    zIndex: 1, // Ensures content appears above the overlay
+    zIndex: 2,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    height: '100vh',
+    justifyContent: 'center',
+  },
+  heroTextBubble: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    padding: '2rem',
+    borderRadius: '1rem',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+    display: 'inline-block',
   },
   heroTitle: {
     fontSize: '3.75rem',
@@ -380,7 +456,7 @@ const styles = {
   },
   heroParagraph: {
     fontSize: '1.25rem',
-    color: '#718096',
+    color: '#2d3748',
     fontWeight: '300',
     letterSpacing: '0.05em',
     marginBottom: '2rem',
@@ -397,188 +473,301 @@ const styles = {
     padding: '1.5rem 2rem',
     fontSize: '1.125rem',
     borderRadius: '9999px',
-    transition: 'background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease',
+    transition: 'background-color 0.3s ease',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     textDecoration: 'none',
     cursor: 'pointer',
-  },
-  heroButtonIcon: {
-    marginRight: '0.5rem',
-    height: '1rem',
-    width: '1rem',
+    border: 'none',
   },
   heroAppointment: {
     fontSize: '0.875rem',
     color: '#a0aec0',
     letterSpacing: '0.05em',
   },
+  scrollIndicator: {
+    position: 'fixed',
+    bottom: '2rem',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '0.5rem',
+    cursor: 'pointer',
+    zIndex: 10,
+    transition: 'opacity 0.3s ease',
+  },
+  scrollArrow: {
+    color: '#e53e3e',
+    animation: 'bounce 2s infinite',
+    width: '40px',
+    height: '40px',
+},
+scrollText: {
+  color: '#4A5568',
+  fontSize: '0.875rem',
+  fontWeight: '500',
+  textTransform: 'uppercase',
+  letterSpacing: '0.1em',
+},
+  cliniciansSection: {
+    padding: '8rem 1.5rem',
+    backgroundColor: '#f7fafc',
+  },
+  cliniciansHeader: {
+    textAlign: 'center',
+    marginBottom: '5rem',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
+  },
+  cliniciansTitle: {
+    fontSize: '2.25rem',
+    fontWeight: '300',
+    letterSpacing: '-0.025em',
+    color: '#1a202c',
+    marginBottom: '1rem',
+  },
+  cliniciansSubtitle: {
+    fontSize: '1rem',
+    color: '#a0aec0',
+    maxWidth: '32rem',
+    margin: '0 auto',
+  },
+  cliniciansGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '3rem',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  clinicianCard: {
+    backgroundColor: '#ffffff',
+    borderRadius: '1rem',
+    overflow: 'hidden',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    cursor: 'pointer',
+    '&:hover': {
+      transform: 'translateY(-5px)',
+      boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)',
+    },
+  },
+  clinicianImageContainer: {
+    width: '100%',
+    height: '300px',
+    overflow: 'hidden',
+  },
+  clinicianImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    transition: 'transform 0.3s ease',
+  },
+  clinicianInfo: {
+    padding: '2rem',
+  },
+  clinicianName: {
+    fontSize: '1.5rem',
+    fontWeight: '500',
+    color: '#1a202c',
+    marginBottom: '0.5rem',
+  },
+  clinicianCredentials: {
+    fontSize: '0.875rem',
+    color: '#e53e3e',
+    fontWeight: '500',
+    marginBottom: '0.5rem',
+  },
+  clinicianTitle: {
+    fontSize: '1rem',
+    color: '#4A5568',
+    fontWeight: '500',
+    marginBottom: '1rem',
+  },
+  clinicianDescription: {
+    fontSize: '0.875rem',
+    color: '#718096',
+    lineHeight: '1.5',
+  },
   servicesSection: {
-    padding: '8rem 1.5rem', // py-32 px-6
+    padding: '8rem 1.5rem',
     backgroundColor: '#ffffff',
   },
   servicesHeader: {
     textAlign: 'center',
-    marginBottom: '5rem', // mb-20
+    marginBottom: '5rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
   },
   servicesTitle: {
-    fontSize: '2.25rem', // text-4xl
-    fontWeight: '300', // font-light
-    letterSpacing: '-0.025em', // tracking-tight
-    color: '#1a202c', // text-gray-900
+    fontSize: '2.25rem',
+    fontWeight: '300',
+    letterSpacing: '-0.025em',
+    color: '#1a202c',
     marginBottom: '1rem',
   },
   servicesSubtitle: {
     fontSize: '1rem',
-    color: '#a0aec0', // text-gray-500
-    maxWidth: '32rem', // max-w-xl
+    color: '#a0aec0',
+    maxWidth: '32rem',
     margin: '0 auto',
   },
   servicesGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(1, 1fr)', // grid-cols-1
-    gap: '3rem', // gap-12
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '2rem',
+    maxWidth: '1200px',
+    margin: '0 auto',
   },
-  // Note: Inline styles do not support media queries. For responsive design,
-  // consider using JavaScript to adjust styles based on window width or using CSS-in-JS libraries.
   serviceCard: {
     backgroundColor: '#ffffff',
     padding: '2rem',
-    borderRadius: '1rem', // rounded-2xl
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // shadow-md
+    borderRadius: '1rem',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     border: '1px solid transparent',
-    transition: 'box-shadow 0.5s ease, border-color 0.5s ease',
+    transition: 'all 0.3s ease',
     textAlign: 'center',
     cursor: 'pointer',
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
   },
   serviceCardHover: {
-    boxShadow: '0 0 30px rgba(0, 0, 0, 0.05)',
-    borderColor: '#f7fafc',
+    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
+    transform: 'translateY(-5px)',
+    borderColor: '#e53e3e',
   },
   serviceIcon: {
-    fontSize: '1.875rem', // text-3xl
-    marginBottom: '1.5rem', // mb-6
+    fontSize: '2.5rem',
+    marginBottom: '1.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '60px',
   },
   serviceTitle: {
-    fontSize: '1.25rem', // text-xl
-    fontWeight: '500', // font-medium
-    color: '#1a202c', // text-gray-900
-    marginBottom: '1rem', // mb-4
+    fontSize: '1.25rem',
+    fontWeight: '500',
+    color: '#1a202c',
+    marginBottom: '1rem',
   },
   serviceDescription: {
-    fontSize: '1rem', // text-gray-600
-    color: '#718096', // text-gray-600
-    marginBottom: '1.5rem', // mb-6
+    fontSize: '1rem',
+    color: '#718096',
+    marginBottom: '1.5rem',
     flexGrow: 1,
   },
   serviceLearnMore: {
     display: 'flex',
     alignItems: 'center',
-    fontSize: '0.875rem', // text-sm
-    color: '#a0aec0', // text-gray-500
-    transition: 'color 0.3s ease',
-    cursor: 'pointer',
+    justifyContent: 'center',
+    fontSize: '0.875rem',
+    color: '#a0aec0',
+    transition: 'all 0.3s ease',
+    gap: '0.5rem',
+    marginTop: 'auto',
   },
   serviceLearnMoreHover: {
-    color: '#e53e3e', // text-red-600
+    color: '#e53e3e',
   },
   serviceArrow: {
-    width: '1rem', // w-4
-    height: '1rem', // h-4
-    marginLeft: '0.5rem', // mr-2
+    width: '1rem',
+    height: '1rem',
     transition: 'transform 0.3s ease',
   },
   serviceArrowHover: {
-    transform: 'translateX(0.25rem)', // translate-x-1
+    transform: 'translateX(5px)',
   },
   locationSection: {
-    padding: '8rem 1.5rem', // py-32 px-6
-    backgroundColor: '#f7fafc', // bg-gray-50
+    padding: '8rem 1.5rem',
+    backgroundColor: '#f7fafc',
   },
   locationHeader: {
     textAlign: 'center',
-    marginBottom: '5rem', // mb-20
+    marginBottom: '5rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
   },
   locationTitle: {
-    fontSize: '2.25rem', // text-4xl
-    fontWeight: '300', // font-light
-    letterSpacing: '-0.025em', // tracking-tight
-    color: '#1a202c', // text-gray-900
+    fontSize: '2.25rem',
+    fontWeight: '300',
+    letterSpacing: '-0.025em',
+    color: '#1a202c',
     marginBottom: '1rem',
   },
   locationSubtitle: {
     fontSize: '1rem',
-    color: '#a0aec0', // text-gray-500
-    maxWidth: '32rem', // max-w-xl
+    color: '#a0aec0',
+    maxWidth: '32rem',
     margin: '0 auto',
   },
   locationMapContainer: {
     backgroundColor: '#ffffff',
-    borderRadius: '1rem', // rounded-2xl
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)', // shadow-sm
+    borderRadius: '1rem',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
     overflow: 'hidden',
   },
   locationMap: {
     height: '500px',
-    backgroundColor: '#f7fafc', // bg-gray-100
+    backgroundColor: '#f7fafc',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
   locationIcon: {
-    width: '3rem', // w-12
-    height: '3rem', // h-12
-    color: '#cbd5e0', // text-gray-400
+    width: '3rem',
+    height: '3rem',
+    color: '#cbd5e0',
   },
   contactSection: {
-    padding: '8rem 1.5rem', // py-32 px-6
+    padding: '8rem 1.5rem',
   },
   contactHeader: {
     textAlign: 'center',
-    marginBottom: '5rem', // mb-20
+    marginBottom: '5rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
   },
   contactTitle: {
-    fontSize: '2.25rem', // text-4xl
-    fontWeight: '300', // font-light
-    letterSpacing: '-0.025em', // tracking-tight
-    color: '#1a202c', // text-gray-900
+    fontSize: '2.25rem',
+    fontWeight: '300',
+    letterSpacing: '-0.025em',
+    color: '#1a202c',
     marginBottom: '1rem',
   },
   contactSubtitle: {
     fontSize: '1rem',
-    color: '#a0aec0', // text-gray-500
+    color: '#a0aec0',
   },
   contactForm: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '2rem', // space-y-8
+    gap: '2rem',
+    maxWidth: '600px',
+    margin: '0 auto',
   },
   contactInput: {
     width: '100%',
-    padding: '1rem 1.5rem', // px-6 py-4
-    backgroundColor: '#f9fafb', // bg-gray-50
+    padding: '1rem 1.5rem',
+    backgroundColor: '#f9fafb',
     border: 'none',
-    borderRadius: '0.75rem', // rounded-xl
+    borderRadius: '0.75rem',
     textAlign: 'center',
     transition: 'outline 0.2s ease',
     fontSize: '1rem',
   },
   contactTextarea: {
     width: '100%',
-    padding: '1rem 1.5rem', // px-6 py-4
-    backgroundColor: '#f9fafb', // bg-gray-50
+    padding: '1rem 1.5rem',
+    backgroundColor: '#f9fafb',
     border: 'none',
-    borderRadius: '0.75rem', // rounded-xl
+    borderRadius: '0.75rem',
     textAlign: 'center',
     resize: 'vertical',
     transition: 'outline 0.2s ease',
@@ -586,39 +775,40 @@ const styles = {
   },
   contactButton: {
     width: '100%',
-    backgroundColor: '#e53e3e', // bg-red-600
-    color: '#ffffff', // text-white
-    padding: '1.5rem', // py-6
-    borderRadius: '0.75rem', // rounded-xl
-    fontSize: '1.125rem', // text-lg
+    backgroundColor: '#e53e3e',
+    color: '#ffffff',
+    padding: '1.5rem',
+    borderRadius: '0.75rem',
+    fontSize: '1.125rem',
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
     border: 'none',
   },
   contactInfo: {
-    marginTop: '5rem', // mt-20
+    marginTop: '5rem',
     display: 'flex',
     flexDirection: 'column',
-    gap: '1.5rem', // space-y-6
+    gap: '1.5rem',
     textAlign: 'center',
   },
   contactLink: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#4A5568', // text-gray-600
+    color: '#4A5568',
     textDecoration: 'none',
     transition: 'color 0.3s ease',
     fontSize: '1rem',
   },
   contactLinkHover: {
-    color: '#e53e3e', // text-red-600
+    color: '#e53e3e',
   },
   contactIcon: {
-    width: '1.25rem', // w-5
-    height: '1.25rem', // h-5
-    marginRight: '0.75rem', // mr-3
+    width: '1.25rem',
+    height: '1.25rem',
+    marginRight: '0.75rem',
   },
 };
+
 
 export default HealthWebsite;
