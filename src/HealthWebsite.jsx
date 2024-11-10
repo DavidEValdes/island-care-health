@@ -1,5 +1,5 @@
 // src/HealthWebsite.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Calendar, ArrowRight, ChevronDown } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
@@ -13,7 +13,29 @@ const HealthWebsite = () => {
 
 const [showScrollIndicator, setShowScrollIndicator] = useState(true);
 
+// Add this useEffect after all your state declarations
+useEffect(() => {
+  const handleScroll = () => {
+    const cliniciansSection = document.querySelector('#clinicians-section');
+    if (cliniciansSection) {
+      const rect = cliniciansSection.getBoundingClientRect();
+      setShowScrollIndicator(rect.top > window.innerHeight);
+    }
+  };
 
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Check initial position
+
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
+// Add this function to handle scroll on click
+const scrollToTeam = () => {
+  const cliniciansSection = document.querySelector('#clinicians-section');
+  if (cliniciansSection) {
+    cliniciansSection.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 
   const clinicians = [
     {
@@ -153,18 +175,24 @@ const [showScrollIndicator, setShowScrollIndicator] = useState(true);
               </span>
             </div>
           </div>
-          <div style={styles.scrollIndicator}>
-            <ChevronDown 
-              size={40}
-              style={styles.scrollArrow}
-            />
-            <span style={styles.scrollText}>Meet Our Team</span>
-          </div>
+          <div 
+  style={{
+    ...styles.scrollIndicator,
+    opacity: showScrollIndicator ? 1 : 0,
+    pointerEvents: showScrollIndicator ? 'auto' : 'none',
+  }}
+  onClick={scrollToTeam}
+>
+  <ChevronDown 
+    style={styles.scrollArrow}
+  />
+  <span style={styles.scrollText}>Meet Our Team</span>
+</div>
         </div>
       </section>
 
       {/* New Clinicians Section */}
-      <section style={styles.cliniciansSection}>
+      <section id="clinicians-section" style={styles.cliniciansSection}>
         <div style={styles.cliniciansHeader}>
           <h2 style={styles.cliniciansTitle}>Our Expert Clinicians</h2>
           <p style={styles.cliniciansSubtitle}>
