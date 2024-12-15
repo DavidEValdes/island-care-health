@@ -517,7 +517,7 @@ const styles = {
     },
   },
   heroTitle: {
-    fontSize: '3rem',
+    fontSize: '2.5rem',
     fontWeight: '300',
     lineHeight: '1.2',
     letterSpacing: '-0.025em',
@@ -526,20 +526,27 @@ const styles = {
       fontSize: '3.5rem',
       lineHeight: '1.25',
     },
+    '@media (max-width: 380px)': {
+      fontSize: '2rem',
+    },
   },
   heroTitleHighlight: {
     color: '#e53e3e',
   },
   heroParagraph: {
-    fontSize: '1.1rem',
+    fontSize: '1rem',
     color: '#2d3748',
     fontWeight: '300',
     letterSpacing: '0.05em',
-    marginBottom: '1.75rem',
+    marginBottom: '1.5rem',
     maxWidth: '600px',
     '@media (min-width: 768px)': {
       fontSize: '1.25rem',
       marginBottom: '2rem',
+    },
+    '@media (max-width: 380px)': {
+      fontSize: '0.9rem',
+      marginBottom: '1rem',
     },
   },
   heroButtons: {
@@ -554,8 +561,8 @@ const styles = {
   heroButton: {
     backgroundColor: '#e53e3e',
     color: '#ffffff',
-    padding: '1.25rem 1.75rem',
-    fontSize: '1.1rem',
+    padding: '1rem 1.5rem',
+    fontSize: '1rem',
     borderRadius: '9999px',
     transition: 'background-color 0.3s ease',
     display: 'flex',
@@ -568,6 +575,10 @@ const styles = {
     '@media (min-width: 768px)': {
       padding: '1.5rem 2rem',
       fontSize: '1.125rem',
+    },
+    '@media (max-width: 380px)': {
+      padding: '0.75rem 1.25rem',
+      fontSize: '0.9rem',
     },
   },
   heroAppointment: {
@@ -639,6 +650,10 @@ const styles = {
     gap: '3rem',
     maxWidth: '1200px',
     margin: '0 auto',
+    '@media (max-width: 380px)': {
+      gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+      gap: '1.5rem',
+    },
   },
   clinicianCard: {
     backgroundColor: '#ffffff',
@@ -647,15 +662,17 @@ const styles = {
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     cursor: 'pointer',
-    '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)',
+    '@media (max-width: 380px)': {
+      borderRadius: '0.75rem',
     },
   },
   clinicianImageContainer: {
     width: '100%',
     height: '300px',
     overflow: 'hidden',
+    '@media (max-width: 380px)': {
+      height: '220px',
+    },
   },
   clinicianImage: {
     width: '100%',
@@ -720,6 +737,11 @@ const styles = {
     maxWidth: '1200px',
     margin: '0 auto',
     padding: '0 1rem',
+    '@media (max-width: 380px)': {
+      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+      gap: '0.75rem',
+      padding: '0 0.5rem',
+    },
   },
   serviceCard: {
     backgroundColor: '#ffffff',
@@ -742,6 +764,11 @@ const styles = {
     maxWidth: '100%',
     boxSizing: 'border-box',
     position: 'relative',
+    '@media (max-width: 380px)': {
+      padding: '1rem',
+      minHeight: '150px',
+      gap: '0.25rem',
+    },
   },
   serviceCardHover: {
     boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
@@ -887,6 +914,10 @@ const styles = {
     backgroundColor: '#ffffff',
     borderRadius: '0.5rem',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    '@media (max-width: 380px)': {
+      padding: '1rem',
+      gap: '0.75rem',
+    },
   },
   contactInput: {
     width: '100%',
@@ -965,10 +996,13 @@ const styles = {
     alignItems: 'center',
   },
   heroHomeVisit: {
-    fontSize: '1rem',
+    fontSize: '0.9rem',
     color: 'black',
     letterSpacing: '0.05em',
     fontStyle: 'italic',
+    '@media (max-width: 380px)': {
+      fontSize: '0.8rem',
+    },
   },
   modalOverlay: {
     position: 'fixed',
