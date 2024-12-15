@@ -30,6 +30,7 @@ const HealthWebsite = () => {
   const [isContactButtonHovered, setIsContactButtonHovered] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [flippedCard, setFlippedCard] = useState(null);
 
   const openModal = (content) => {
     setModalContent(content);
@@ -211,19 +212,65 @@ const HealthWebsite = () => {
         </div>
         <div style={styles.cliniciansGrid}>
           {clinicians.map((clinician, index) => (
-            <div key={index} style={styles.clinicianCard}>
-              <div style={styles.clinicianImageContainer}>
-                <img
-                  src={index === 0 ? lisaCummins : galeZappacosta}
-                  alt={clinician.name}
-                  style={styles.clinicianImage}
-                />
-              </div>
-              <div style={styles.clinicianInfo}>
-                <h3 style={styles.clinicianName}>{clinician.name}</h3>
-                <p style={styles.clinicianCredentials}>{clinician.credentials}</p>
-                <h4 style={styles.clinicianTitle}>{clinician.title}</h4>
-                <p style={styles.clinicianDescription}>{clinician.description}</p>
+            <div 
+              key={index} 
+              style={styles.clinicianCardContainer}
+              onClick={() => setFlippedCard(flippedCard === index ? null : index)}
+            >
+              <div style={{
+                ...styles.clinicianCardInner,
+                transform: flippedCard === index ? 'rotateY(180deg)' : 'rotateY(0)',
+              }}>
+                {/* Front of card */}
+                <div style={styles.clinicianCardFront}>
+                  <div style={styles.clinicianImageContainer}>
+                    <img
+                      src={index === 0 ? lisaCummins : galeZappacosta}
+                      alt={clinician.name}
+                      style={styles.clinicianImage}
+                    />
+                  </div>
+                  <div style={styles.clinicianInfo}>
+                    <h3 style={styles.clinicianName}>{clinician.name}</h3>
+                    <p style={styles.clinicianCredentials}>{clinician.credentials}</p>
+                    <h4 style={styles.clinicianTitle}>{clinician.title}</h4>
+                    <p style={styles.clinicianDescription}>{clinician.description}</p>
+                  </div>
+                </div>
+                {/* Back of card */}
+                <div style={styles.clinicianCardBack}>
+                  <div style={styles.clinicianBackContent}>
+                    <h3 style={styles.clinicianBackTitle}>Areas of Expertise</h3>
+                    {index === 0 ? (
+                      <>
+                        <ul style={styles.clinicianBackList}>
+                          <li>Musculoskeletal Rehabilitation</li>
+                          <li>Neurac Method Treatment</li>
+                          <li>Ergonomic Assessments</li>
+                          <li>Home Visit Therapy</li>
+                          <li>Healthcare Management</li>
+                        </ul>
+                        <p style={styles.clinicianBackText}>
+                          Specialized in therapeutic exercise and ergonomic assessments with extensive experience in both clinical and home settings.
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <ul style={styles.clinicianBackList}>
+                          <li>Chiropractic Adjustments</li>
+                          <li>Myofascial Trigger Point Therapy</li>
+                          <li>Dry Needling</li>
+                          <li>Neuro-stabilization Techniques</li>
+                          <li>Nutritional Guidance</li>
+                        </ul>
+                        <p style={styles.clinicianBackText}>
+                          Expert in comprehensive care combining various therapeutic modalities for optimal patient outcomes.
+                        </p>
+                      </>
+                    )}
+                    <p style={styles.clinicianBackNote}>Click to flip back</p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -711,25 +758,116 @@ const styles = {
       gap: '1.5rem',
     },
   },
-  clinicianCard: {
+  clinicianCardContainer: {
+    perspective: '1000px',
+    cursor: 'pointer',
+    height: '650px',
+    width: '100%',
+    '@media (max-width: 768px)': {
+      height: '580px',
+    },
+    '@media (max-width: 380px)': {
+      height: '500px',
+    },
+  },
+  clinicianCardInner: {
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+    transition: 'transform 0.8s',
+    transformStyle: 'preserve-3d',
+  },
+  clinicianCardFront: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backfaceVisibility: 'hidden',
     backgroundColor: '#ffffff',
     borderRadius: '1.5rem',
     overflow: 'hidden',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    cursor: 'pointer',
-    '&:hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
+  },
+  clinicianCardBack: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backfaceVisibility: 'hidden',
+    backgroundColor: '#ffffff',
+    borderRadius: '1.5rem',
+    transform: 'rotateY(180deg)',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  clinicianBackContent: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    gap: '0.75rem',
+    padding: '2rem',
+    overflowY: 'auto',
+    '@media (max-width: 380px)': {
+      gap: '0.5rem',
+      padding: '1.5rem',
     },
+  },
+  clinicianBackTitle: {
+    fontSize: '1.5rem',
+    fontWeight: '600',
+    color: '#2D3748',
+    marginBottom: '0.75rem',
+    '@media (max-width: 380px)': {
+      fontSize: '1.25rem',
+      marginBottom: '0.5rem',
+    },
+  },
+  clinicianBackList: {
+    listStyle: 'none',
+    padding: 0,
+    margin: '0 0 0.75rem 0',
+    color: '#4A5568',
+    fontSize: '1rem',
+    lineHeight: '1.6',
+    textAlign: 'left',
+    '@media (max-width: 380px)': {
+      fontSize: '0.9rem',
+      lineHeight: '1.5',
+      margin: '0 0 0.5rem 0',
+    },
+  },
+  clinicianBackText: {
+    color: '#718096',
+    fontSize: '0.9rem',
+    lineHeight: '1.6',
+    marginBottom: '1rem',
+    '@media (max-width: 380px)': {
+      fontSize: '0.85rem',
+      lineHeight: '1.5',
+      marginBottom: '0.75rem',
+    },
+  },
+  clinicianBackNote: {
+    color: '#A0AEC0',
+    fontSize: '0.8rem',
+    fontStyle: 'italic',
+    marginTop: 'auto',
   },
   clinicianImageContainer: {
     width: '100%',
-    height: '400px',
+    height: '350px',
     overflow: 'hidden',
     position: 'relative',
-    '@media (max-width: 380px)': {
+    '@media (max-width: 768px)': {
       height: '300px',
+    },
+    '@media (max-width: 380px)': {
+      height: '220px',
     },
   },
   clinicianImage: {
