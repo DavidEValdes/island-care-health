@@ -939,14 +939,14 @@ const styles = {
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
   contactSection: {
-    padding: '3rem 1rem',
+    padding: '1rem 1rem 3rem 1rem',
     backgroundColor: '#f9fafb',
     maxWidth: '1200px',
     margin: '0 auto',
   },
   contactHeader: {
     textAlign: 'center',
-    marginBottom: '3rem',
+    marginBottom: '2rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '0.5rem',
