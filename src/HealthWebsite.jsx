@@ -425,11 +425,11 @@ const styles = {
     flex: '1',
   },
   navLogo: {
-    height: '55px',
+    height: '65px',
     width: 'auto',
     objectFit: 'contain',
     '@media (max-width: 376px)': {
-      height: '45px',
+      height: '50px',
     },
   },
   navRight: {
