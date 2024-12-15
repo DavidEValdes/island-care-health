@@ -501,9 +501,13 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     paddingTop: '0.5rem',
+    width: '100%',
     '@media (min-width: 768px)': {
       maxWidth: '768px',
       paddingTop: 0,
+    },
+    '@media (max-width: 380px)': {
+      padding: '0',
     },
   },
   heroTextBubble: {
@@ -512,8 +516,17 @@ const styles = {
     borderRadius: '1rem',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
     display: 'inline-block',
+    width: '100%',
+    maxWidth: '100%',
+    boxSizing: 'border-box',
     '@media (min-width: 768px)': {
       padding: '2rem',
+      width: 'auto',
+    },
+    '@media (max-width: 380px)': {
+      padding: '1.25rem',
+      margin: '0 0.5rem',
+      width: 'calc(100% - 1rem)',
     },
   },
   heroTitle: {
