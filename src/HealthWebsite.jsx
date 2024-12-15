@@ -282,31 +282,36 @@ const HealthWebsite = () => {
 
       {/* Location Section */}
       <section style={styles.locationSection}>
-        <div style={styles.locationHeader}>
-          <h2 style={styles.locationTitle}>Visit Us</h2>
-          <p style={styles.locationSubtitle}>
-            Located in the heart of Seven Mile Beach
-          </p>
-        </div>
-        <div style={styles.locationMapContainer}>
-          <div style={styles.locationMap}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.1234567890123!2d-81.38666655!3d19.3429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f258910b7367a83%3A0x4347d823929f0544!2sIsland+Care+Health!5e0!3m2!1sen!2sus!4v1701893547372!5m2!1sen!2sus"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Location Map"
-            />
+        <div style={styles.locationWrapper}>
+          <div style={styles.locationHeader}>
+            <h2 style={styles.locationTitle}>Visit Us</h2>
+            <p style={styles.locationSubtitle}>
+              Located in the heart of Seven Mile Beach
+            </p>
           </div>
-        </div>
-        <div style={styles.locationAddress}>
-          <p>Island Care Health</p>
-          <p>Countryside Shopping Village</p>
-          <p>33 Hirst Rd, Savannah KY1-1506</p>
-          <p>Cayman Islands</p>
+          <div style={styles.locationContent}>
+            <div style={styles.locationMapContainer}>
+              <div style={styles.locationMap}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.1234567890123!2d-81.38666655!3d19.3429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f258910b7367a83%3A0x4347d823929f0544!2sIsland+Care+Health!5e0!3m2!1sen!2sus!4v1701893547372!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Location Map"
+                />
+              </div>
+            </div>
+            <div style={styles.locationAddress}>
+              
+              <p style={styles.locationAddressText}>Island Care Health</p>
+              <p style={styles.locationAddressText}>Countryside Shopping Village</p>
+              <p style={styles.locationAddressText}>33 Hirst Rd, Savannah KY1-1506</p>
+              <p style={styles.locationAddressText}>Cayman Islands</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -893,52 +898,91 @@ const styles = {
   locationSection: {
     padding: '4rem 1.5rem',
     backgroundColor: '#f7fafc',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  locationWrapper: {
+    backgroundColor: '#ffffff',
+    borderRadius: '1.5rem',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+    padding: '2.5rem',
+    maxWidth: '1000px',
+    margin: '0 auto',
+    '@media (max-width: 380px)': {
+      padding: '1.5rem',
+      borderRadius: '1rem',
+    },
   },
   locationHeader: {
     textAlign: 'center',
-    marginBottom: '5rem',
+    marginBottom: '2.5rem',
     display: 'flex',
     flexDirection: 'column',
-    gap: '1rem',
+    gap: '0.75rem',
   },
   locationTitle: {
-    fontSize: '2.5rem',
-    fontWeight: '300',
-    letterSpacing: '-0.025em',
+    fontSize: '2.25rem',
+    fontWeight: '500',
     color: '#1a202c',
-    marginBottom: '1rem',
+    letterSpacing: '-0.025em',
   },
   locationSubtitle: {
-    fontSize: '1rem',
-    color: '#a0aec0',
+    fontSize: '1.1rem',
+    color: '#4A5568',
     maxWidth: '32rem',
     margin: '0 auto',
   },
+  locationContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '2rem',
+  },
   locationMapContainer: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f8fafc',
     borderRadius: '1rem',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
     overflow: 'hidden',
-    height: '500px',
-    maxWidth: '1200px',
-    margin: '0 auto',
-    position: 'relative'
+    height: '400px',
+    width: '100%',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    '&:hover': {
+      transform: 'translateY(-2px)',
+      boxShadow: '0 6px 16px rgba(0, 0, 0, 0.08)',
+    },
   },
   locationMap: {
     width: '100%',
     height: '100%',
-    position: 'relative'
+    position: 'relative',
   },
   locationAddress: {
     textAlign: 'center',
-    marginTop: '2rem',
     color: '#4A5568',
     fontSize: '1.1rem',
     lineHeight: '1.8',
-    padding: '1rem',
-    backgroundColor: '#f9fafb',
-    borderRadius: '0.5rem',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    padding: '2rem',
+    backgroundColor: '#f8fafc',
+    borderRadius: '1rem',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    '&:hover': {
+      transform: 'translateY(-2px)',
+      boxShadow: '0 6px 16px rgba(0, 0, 0, 0.08)',
+    },
+  },
+  locationAddressTitle: {
+    fontSize: '1.25rem',
+    fontWeight: '500',
+    color: '#2D3748',
+    marginBottom: '0.5rem',
+  },
+  locationAddressText: {
+    color: '#4A5568',
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
   },
   contactSection: {
     padding: '1rem 1rem 3rem 1rem',
