@@ -305,8 +305,7 @@ const HealthWebsite = () => {
               </div>
             </div>
             <div style={styles.locationAddress}>
-              
-              <p style={styles.locationAddressText}>Island Care Health</p>
+              <p style={styles.locationClinicName}>Island Care Health</p>
               <p style={styles.locationAddressText}>Countryside Shopping Village</p>
               <p style={styles.locationAddressText}>33 Hirst Rd, Savannah KY1-1506</p>
               <p style={styles.locationAddressText}>Cayman Islands</p>
@@ -977,9 +976,9 @@ const styles = {
       boxShadow: '0 6px 16px rgba(0, 0, 0, 0.08)',
     },
   },
-  locationAddressTitle: {
-    fontSize: '1.25rem',
-    fontWeight: '500',
+  locationClinicName: {
+    fontSize: '1.5rem',
+    fontWeight: '600',
     color: '#2D3748',
     marginBottom: '0.5rem',
   },
