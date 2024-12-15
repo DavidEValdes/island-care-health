@@ -4,6 +4,7 @@ import { Phone, Mail, Calendar, ArrowRight, ChevronDown } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
+import logo from './assets/logo.avif';
 
 // Modal component
 const Modal = ({ isOpen, onClose, content }) => {
@@ -120,7 +121,7 @@ const HealthWebsite = () => {
       {/* Navigation */}
       <nav style={styles.nav}>
         <div style={styles.navLeft}>
-          <span style={styles.navBrand}>ISLAND CARE</span>
+          <img src={logo} alt="Island Care Health" style={styles.navLogo} />
         </div>
         <div style={styles.navRight}>
           <a
@@ -412,7 +413,7 @@ const styles = {
     backgroundColor: 'rgba(255, 255, 255, 0.95)',
     backdropFilter: 'blur(4px)',
     borderBottom: '1px solid #e2e8f0',
-    padding: '1rem 1.5rem',
+    padding: '0.75rem 1.5rem',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -421,17 +422,20 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '0.5rem',
+    flex: '1',
   },
-  navBrand: {
-    color: '#e53e3e',
-    fontWeight: 'normal',
-    fontSize: '1.5rem',
-    letterSpacing: '0.05em',
+  navLogo: {
+    height: '55px',
+    width: 'auto',
+    objectFit: 'contain',
+    '@media (max-width: 376px)': {
+      height: '45px',
+    },
   },
   navRight: {
     display: 'flex',
     alignItems: 'center',
-    gap: '2rem',
+    gap: '1.5rem',
   },
   navLink: {
     fontSize: '1rem',
@@ -447,7 +451,7 @@ const styles = {
     backgroundColor: '#e53e3e',
     color: '#ffffff',
     border: 'none',
-    padding: '0.75rem 1.5rem',
+    padding: '0.5rem 1rem',
     borderRadius: '9999px',
     fontWeight: '500',
     cursor: 'pointer',
@@ -456,6 +460,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    fontSize: '0.9rem',
   },
   heroButtonIcon: {
     marginRight: '0.5rem',
@@ -506,8 +511,9 @@ const styles = {
       maxWidth: '768px',
       paddingTop: 0,
     },
-    '@media (max-width: 380px)': {
+    '@media (max-width: 376px)': {
       padding: '0',
+      maxWidth: '100%',
     },
   },
   heroTextBubble: {
@@ -523,10 +529,11 @@ const styles = {
       padding: '2rem',
       width: 'auto',
     },
-    '@media (max-width: 380px)': {
-      padding: '1.25rem',
-      margin: '0 0.5rem',
-      width: 'calc(100% - 1rem)',
+    '@media (max-width: 376px)': {
+      padding: '1rem',
+      margin: '0 1rem',
+      width: 'calc(100% - 2rem)',
+      maxWidth: '340px',
     },
   },
   heroTitle: {
@@ -539,8 +546,9 @@ const styles = {
       fontSize: '3.5rem',
       lineHeight: '1.25',
     },
-    '@media (max-width: 380px)': {
-      fontSize: '2rem',
+    '@media (max-width: 376px)': {
+      fontSize: '1.75rem',
+      lineHeight: '1.2',
     },
   },
   heroTitleHighlight: {
@@ -557,9 +565,10 @@ const styles = {
       fontSize: '1.25rem',
       marginBottom: '2rem',
     },
-    '@media (max-width: 380px)': {
-      fontSize: '0.9rem',
+    '@media (max-width: 376px)': {
+      fontSize: '0.85rem',
       marginBottom: '1rem',
+      maxWidth: '100%',
     },
   },
   heroButtons: {
