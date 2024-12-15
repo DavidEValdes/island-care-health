@@ -1,78 +1,39 @@
 // src/HealthWebsite.js
-import React, { useState, useEffect, useRef } from 'react';
-import { MapPin, Phone, Mail, Calendar, ArrowRight, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Phone, Mail, Calendar, ArrowRight, ChevronDown } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
 
-const MapComponent = () => {
-  const mapRef = useRef(null);
-  const location = { lat: 19.3429, lng: -81.3867 }; // Seven Mile Beach coordinates
+const HealthWebsite = () => {
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const [hoveredNavLink, setHoveredNavLink] = useState(null);
+  const [hoveredService, setHoveredService] = useState(null);
+  const [hoveredLearnMore, setHoveredLearnMore] = useState(null);
+  const [hoveredContactLink, setHoveredContactLink] = useState(null);
+  const [isContactButtonHovered, setIsContactButtonHovered] = useState(false);
 
   useEffect(() => {
-    // Create map
-    const map = new window.google.maps.Map(mapRef.current, {
-      center: location,
-      zoom: 15,
-      styles: [
-        {
-          featureType: "all",
-          elementType: "geometry",
-          stylers: [{ color: "#f5f5f5" }]
-        },
-        {
-          featureType: "water",
-          elementType: "geometry",
-          stylers: [{ color: "#e9e9e9" }]
-        },
-        {
-          featureType: "water",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#9e9e9e" }]
-        }
-      ]
-    });
+    const handleScroll = () => {
+      const cliniciansSection = document.querySelector('#clinicians-section');
+      if (cliniciansSection) {
+        const rect = cliniciansSection.getBoundingClientRect();
+        setShowScrollIndicator(rect.top > window.innerHeight);
+      }
+    };
 
-    // Add marker
-    new window.google.maps.Marker({
-      position: location,
-      map: map,
-      title: "Island Care",
-      animation: window.google.maps.Animation.DROP
-    });
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return <div ref={mapRef} style={{ width: '100%', height: '100%' }} />;
-};
-
-const HealthWebsite = () => {
-
-
-const [showScrollIndicator, setShowScrollIndicator] = useState(true);
-
-// Add this useEffect after all your state declarations
-useEffect(() => {
-  const handleScroll = () => {
+  const scrollToTeam = () => {
     const cliniciansSection = document.querySelector('#clinicians-section');
     if (cliniciansSection) {
-      const rect = cliniciansSection.getBoundingClientRect();
-      setShowScrollIndicator(rect.top > window.innerHeight);
+      cliniciansSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Check initial position
-
-  return () => window.removeEventListener('scroll', handleScroll);
-}, []);
-
-// Add this function to handle scroll on click
-const scrollToTeam = () => {
-  const cliniciansSection = document.querySelector('#clinicians-section');
-  if (cliniciansSection) {
-    cliniciansSection.scrollIntoView({ behavior: 'smooth' });
-  }
-};
 
   const clinicians = [
     {
@@ -88,8 +49,6 @@ const scrollToTeam = () => {
       credentials: "DPT, CMPT, FMS"
     }
   ];
-
-
 
   const services = [
     {
@@ -123,21 +82,6 @@ const scrollToTeam = () => {
       icon: "🔄"
     }
   ];
-
-  // State for hover effects in navigation links
-  const [hoveredNavLink, setHoveredNavLink] = useState(null);
-
-  // State for hover effects in service cards
-  const [hoveredService, setHoveredService] = useState(null);
-
-  // State for hover effects in learn more links
-  const [hoveredLearnMore, setHoveredLearnMore] = useState(null);
-
-  // State for hover effects in contact links
-  const [hoveredContactLink, setHoveredContactLink] = useState(null);
-
-  // State for hover effect on contact button
-  const [isContactButtonHovered, setIsContactButtonHovered] = useState(false);
 
   return (
     <div style={styles.container}>
@@ -178,55 +122,55 @@ const scrollToTeam = () => {
       </nav>
 
       {/* Hero Section */}
-<section style={styles.heroSection}>
-  <div style={styles.heroOverlay}></div>
-  <div style={styles.heroContent}>
-    <div style={styles.heroTextBubble}>
-      <h1 style={styles.heroTitle}>
-        Modern Healthcare,
-        <br />
-        <span style={styles.heroTitleHighlight}>Personalized</span> Approach
-      </h1>
-      <p style={styles.heroParagraph}>
-        Experience exceptional care at our state-of-the-art clinic,
-        where modern & holistic science meets personalized wellness.
-      </p>
-      <div style={styles.heroButtons}>
-        <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-          <Button
+      <section style={styles.heroSection}>
+        <div style={styles.heroOverlay}></div>
+        <div style={styles.heroContent}>
+          <div style={styles.heroTextBubble}>
+            <h1 style={styles.heroTitle}>
+              Modern Healthcare,
+              <br />
+              <span style={styles.heroTitleHighlight}>Personalized</span> Approach
+            </h1>
+            <p style={styles.heroParagraph}>
+              Experience exceptional care at our state-of-the-art clinic,
+              where modern & holistic science meets personalized wellness.
+            </p>
+            <div style={styles.heroButtons}>
+              <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                <Button
+                  style={{
+                    ...styles.heroButton,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#c53030';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#e53e3e';
+                  }}
+                >
+                  Book Consultation
+                </Button>
+              </a>
+              <div style={styles.appointmentInfo}>
+                <span style={styles.heroHomeVisit}>🏠 Home visits available across Grand Cayman</span>
+              </div>
+            </div>
+          </div>
+          <div
             style={{
-              ...styles.heroButton,
+              ...styles.scrollIndicator,
+              opacity: showScrollIndicator ? 1 : 0,
+              pointerEvents: showScrollIndicator ? 'auto' : 'none',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#c53030';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#e53e3e';
-            }}
+            onClick={scrollToTeam}
           >
-            Book Consultation
-          </Button>
-        </a>
-        <div style={styles.appointmentInfo}>
-          <span style={styles.heroHomeVisit}>🏠 Home visits available across Grand Cayman</span>
+            <ChevronDown style={styles.scrollArrow} />
+            <span style={styles.scrollText}>Meet Our Team</span>
+          </div>
         </div>
-      </div>
-    </div>
-    <div
-      style={{
-        ...styles.scrollIndicator,
-        opacity: showScrollIndicator ? 1 : 0,
-        pointerEvents: showScrollIndicator ? 'auto' : 'none',
-      }}
-      onClick={scrollToTeam}
-    >
-      <ChevronDown style={styles.scrollArrow} />
-      <span style={styles.scrollText}>Meet Our Team</span>
-    </div>
-  </div>
-</section>
+      </section>
 
-      {/* New Clinicians Section */}
+      {/* Clinicians Section */}
       <section id="clinicians-section" style={styles.cliniciansSection}>
         <div style={styles.cliniciansHeader}>
           <h2 style={styles.cliniciansTitle}>Our Expert Clinicians</h2>
@@ -234,7 +178,6 @@ const scrollToTeam = () => {
             Dedicated professionals committed to your recovery and well-being
           </p>
         </div>
-
         <div style={styles.cliniciansGrid}>
           {clinicians.map((clinician, index) => (
             <div key={index} style={styles.clinicianCard}>
@@ -264,7 +207,6 @@ const scrollToTeam = () => {
             Comprehensive wellness solutions tailored to your unique needs
           </p>
         </div>
-
         <div style={styles.servicesGrid}>
           {services.map((service, index) => (
             <Card
@@ -310,7 +252,16 @@ const scrollToTeam = () => {
         </div>
         <div style={styles.locationMapContainer}>
           <div style={styles.locationMap}>
-            <MapComponent />
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.1234567890123!2d-81.38666655!3d19.3429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f258910b7367a83%3A0x4347d823929f0544!2sIsland+Care+Health!5e0!3m2!1sen!2sus!4v1701893547372!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Location Map"
+            />
           </div>
         </div>
         <div style={styles.locationAddress}>
@@ -794,20 +745,19 @@ serviceLearnMore: {
     height: '500px',
     maxWidth: '1200px',
     margin: '0 auto',
+    position: 'relative'
   },
   locationMap: {
-    height: '100%',
     width: '100%',
-    height: '500px',
-    backgroundColor: '#f7fafc',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: '100%',
+    position: 'relative'
   },
-  locationIcon: {
-    width: '3rem',
-    height: '3rem',
-    color: '#cbd5e0',
+  locationAddress: {
+    textAlign: 'center',
+    marginTop: '2rem',
+    color: '#4A5568',
+    fontSize: '1.1rem',
+    lineHeight: '1.8',
   },
   contactSection: {
     padding: '8rem 1.5rem',
