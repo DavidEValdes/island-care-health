@@ -512,7 +512,6 @@ const styles = {
     paddingTop: '1.5rem',
     textAlign: 'center',
     padding: '1.5rem 1.5rem 4rem 1.5rem',
-    borderBottom: '2px solid #e53e3e',
     '@media (min-width: 768px)': {
       paddingTop: '5rem',
       padding: '5rem 1.5rem',
