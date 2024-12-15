@@ -1039,6 +1039,7 @@ const styles = {
     backgroundColor: '#f8fafc',
     borderRadius: '1rem',
     boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+    border: '1px solid #e2e8f0',
     '@media (max-width: 380px)': {
       padding: '1.5rem',
       gap: '0.75rem',
