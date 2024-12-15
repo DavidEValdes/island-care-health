@@ -383,7 +383,7 @@ const HealthWebsite = () => {
               <span>+1 345 925 6677</span>
             </a>
             <a
-              href="https://www.islandcare.ky"
+              href="mailto:info@islandcare.ky"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -394,7 +394,7 @@ const HealthWebsite = () => {
               onMouseLeave={() => setHoveredContactLink(null)}
             >
               <Mail style={styles.contactIcon} />
-              <span>www.islandcare.ky</span>
+              <span>info@islandcare.ky</span>
             </a>
           </div>
         </div>
