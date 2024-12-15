@@ -5,6 +5,8 @@ import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
 import logo from './assets/logo.avif';
+import lisaCummins from './assets/lisa-cummins.avif';
+import galeZappacosta from './assets/gale-zappacosta.jpg';
 
 // Modal component
 const Modal = ({ isOpen, onClose, content }) => {
@@ -70,16 +72,16 @@ const HealthWebsite = () => {
 
   const clinicians = [
     {
-      name: "Dr. Sarah Johnson",
-      title: "Lead Physical Therapist",
-      description: "Specializing in neurological rehabilitation and sports medicine with over 10 years of experience.",
-      credentials: "DPT, OCS, CSCS"
+      name: "Lisa Cummins",
+      title: "Physiotherapist",
+      description: "Experienced physiotherapist specializing in musculoskeletal and neurological cases using the Neurac Method. Double degree in Physical Therapy and Health Education from Florida International University (1999). Offers home visits and ergonomic assessments.",
+      credentials: "PT, HE"
     },
     {
-      name: "Dr. Michael Chen",
-      title: "Senior Physical Therapist",
-      description: "Expert in manual therapy and corrective exercise, focusing on long-term rehabilitation solutions.",
-      credentials: "DPT, CMPT, FMS"
+      name: "Dr. Gale Zappacosta",
+      title: "Chiropractor",
+      description: "Experienced chiropractor focusing on neuro-musculo-skeletal system disorders. Integrates various modalities including myofascial trigger point, dry needling therapy, and specialized techniques for comprehensive patient care.",
+      credentials: "DC"
     }
   ];
 
@@ -212,7 +214,7 @@ const HealthWebsite = () => {
             <div key={index} style={styles.clinicianCard}>
               <div style={styles.clinicianImageContainer}>
                 <img
-                  src={`/api/placeholder/300/300`}
+                  src={index === 0 ? lisaCummins : galeZappacosta}
                   alt={clinician.name}
                   style={styles.clinicianImage}
                 />
