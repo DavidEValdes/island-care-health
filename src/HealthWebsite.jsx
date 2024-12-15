@@ -715,12 +715,12 @@ serviceLearnMore: {
     transform: 'translateX(5px)',
   },
   locationSection: {
-    padding: '8rem 1.5rem',
+    padding: '4rem 1.5rem',
     backgroundColor: '#f7fafc',
   },
   locationHeader: {
     textAlign: 'center',
-    marginBottom: '5rem',
+    marginBottom: '3rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
