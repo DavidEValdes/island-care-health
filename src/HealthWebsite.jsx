@@ -312,85 +312,87 @@ const HealthWebsite = () => {
 
       {/* Contact Section */}
       <section style={styles.contactSection}>
-        <div style={styles.contactHeader}>
-          <h2 style={styles.contactTitle}>Get in Touch</h2>
-          <p style={styles.contactSubtitle}>
-            We're here to help with any questions you may have
-          </p>
-        </div>
-        <form style={styles.contactForm}>
-          <input
-            type="text"
-            placeholder="Name"
-            style={styles.contactInput}
-            onFocus={(e) => {
-              e.target.style.outline = '2px solid #e53e3e';
-            }}
-            onBlur={(e) => {
-              e.target.style.outline = 'none';
-            }}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            style={styles.contactInput}
-            onFocus={(e) => {
-              e.target.style.outline = '2px solid #e53e3e';
-            }}
-            onBlur={(e) => {
-              e.target.style.outline = 'none';
-            }}
-          />
-          <textarea
-            rows={4}
-            placeholder="Message"
-            style={styles.contactTextarea}
-            onFocus={(e) => {
-              e.target.style.outline = '2px solid #e53e3e';
-            }}
-            onBlur={(e) => {
-              e.target.style.outline = 'none';
-            }}
-          />
-          <Button
-            style={{
-              ...styles.contactButton,
-              backgroundColor: isContactButtonHovered ? '#c53030' : '#e53e3e',
-            }}
-            onMouseEnter={() => setIsContactButtonHovered(true)}
-            onMouseLeave={() => setIsContactButtonHovered(false)}
-          >
-            Send Message
-          </Button>
-        </form>
+        <div style={styles.contactWrapper}>
+          <div style={styles.contactHeader}>
+            <h2 style={styles.contactTitle}>Get in Touch</h2>
+            <p style={styles.contactSubtitle}>
+              We're here to help with any questions you may have
+            </p>
+          </div>
+          <form style={styles.contactForm}>
+            <input
+              type="text"
+              placeholder="Name"
+              style={styles.contactInput}
+              onFocus={(e) => {
+                e.target.style.outline = '2px solid #e53e3e';
+              }}
+              onBlur={(e) => {
+                e.target.style.outline = 'none';
+              }}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              style={styles.contactInput}
+              onFocus={(e) => {
+                e.target.style.outline = '2px solid #e53e3e';
+              }}
+              onBlur={(e) => {
+                e.target.style.outline = 'none';
+              }}
+            />
+            <textarea
+              rows={4}
+              placeholder="Message"
+              style={styles.contactTextarea}
+              onFocus={(e) => {
+                e.target.style.outline = '2px solid #e53e3e';
+              }}
+              onBlur={(e) => {
+                e.target.style.outline = 'none';
+              }}
+            />
+            <Button
+              style={{
+                ...styles.contactButton,
+                backgroundColor: isContactButtonHovered ? '#c53030' : '#e53e3e',
+              }}
+              onMouseEnter={() => setIsContactButtonHovered(true)}
+              onMouseLeave={() => setIsContactButtonHovered(false)}
+            >
+              Send Message
+            </Button>
+          </form>
 
-        <div style={styles.contactInfo}>
-          <a
-            href="tel:1-345-925-6677"
-            style={{
-              ...styles.contactLink,
-              ...(hoveredContactLink === 'phone' ? styles.contactLinkHover : {}),
-            }}
-            onMouseEnter={() => setHoveredContactLink('phone')}
-            onMouseLeave={() => setHoveredContactLink(null)}
-          >
-            <Phone style={styles.contactIcon} />
-            <span>+1 345 925 6677</span>
-          </a>
-          <a
-            href="https://www.islandcare.ky"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              ...styles.contactLink,
-              ...(hoveredContactLink === 'email' ? styles.contactLinkHover : {}),
-            }}
-            onMouseEnter={() => setHoveredContactLink('email')}
-            onMouseLeave={() => setHoveredContactLink(null)}
-          >
-            <Mail style={styles.contactIcon} />
-            <span>www.islandcare.ky</span>
-          </a>
+          <div style={styles.contactInfo}>
+            <a
+              href="tel:1-345-925-6677"
+              style={{
+                ...styles.contactLink,
+                ...(hoveredContactLink === 'phone' ? styles.contactLinkHover : {}),
+              }}
+              onMouseEnter={() => setHoveredContactLink('phone')}
+              onMouseLeave={() => setHoveredContactLink(null)}
+            >
+              <Phone style={styles.contactIcon} />
+              <span>+1 345 925 6677</span>
+            </a>
+            <a
+              href="https://www.islandcare.ky"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...styles.contactLink,
+                ...(hoveredContactLink === 'email' ? styles.contactLinkHover : {}),
+              }}
+              onMouseEnter={() => setHoveredContactLink('email')}
+              onMouseLeave={() => setHoveredContactLink(null)}
+            >
+              <Mail style={styles.contactIcon} />
+              <span>www.islandcare.ky</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -944,6 +946,18 @@ const styles = {
     maxWidth: '1200px',
     margin: '0 auto',
   },
+  contactWrapper: {
+    backgroundColor: '#ffffff',
+    borderRadius: '1.5rem',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+    padding: '2.5rem',
+    maxWidth: '900px',
+    margin: '0 auto',
+    '@media (max-width: 380px)': {
+      padding: '1.5rem',
+      borderRadius: '1rem',
+    },
+  },
   contactHeader: {
     textAlign: 'center',
     marginBottom: '2rem',
@@ -970,12 +984,12 @@ const styles = {
     gap: '1rem',
     maxWidth: '600px',
     margin: '0 auto',
-    padding: '1.5rem',
-    backgroundColor: '#ffffff',
-    borderRadius: '0.5rem',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    padding: '2rem',
+    backgroundColor: '#f8fafc',
+    borderRadius: '1rem',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
     '@media (max-width: 380px)': {
-      padding: '1rem',
+      padding: '1.5rem',
       gap: '0.75rem',
     },
   },
