@@ -912,6 +912,7 @@ const styles = {
     padding: '2.5rem',
     maxWidth: '1000px',
     margin: '0 auto',
+    border: '2px solid #e53e3e',
     '@media (max-width: 380px)': {
       padding: '1.5rem',
       borderRadius: '1rem',
@@ -1004,6 +1005,7 @@ const styles = {
     padding: '2.5rem',
     maxWidth: '900px',
     margin: '0 auto',
+    border: '2px solid #e53e3e',
     '@media (max-width: 380px)': {
       padding: '1.5rem',
       borderRadius: '1rem',
