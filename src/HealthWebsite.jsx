@@ -896,10 +896,13 @@ const styles = {
     transform: 'translateX(5px)',
   },
   locationSection: {
-    padding: '4rem 1.5rem',
+    padding: '4rem 1.5rem 2rem 1.5rem',
     backgroundColor: '#f7fafc',
     maxWidth: '1200px',
     margin: '0 auto',
+    '@media (max-width: 380px)': {
+      padding: '2rem 1rem 1rem 1rem',
+    },
   },
   locationWrapper: {
     backgroundColor: '#ffffff',
@@ -985,10 +988,13 @@ const styles = {
     lineHeight: '1.6',
   },
   contactSection: {
-    padding: '1rem 1rem 3rem 1rem',
+    padding: '2rem 1rem 3rem 1rem',
     backgroundColor: '#f9fafb',
     maxWidth: '1200px',
     margin: '0 auto',
+    '@media (max-width: 380px)': {
+      padding: '1rem 1rem 2rem 1rem',
+    },
   },
   contactWrapper: {
     backgroundColor: '#ffffff',
