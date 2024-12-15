@@ -691,7 +691,7 @@ const styles = {
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: '#f0f0f0',
-    transition: 'all 0.3s ease',
+    transition: 'all 0.5s ease',
     textAlign: 'center',
     cursor: 'pointer',
     display: 'flex',
@@ -710,6 +710,11 @@ const styles = {
     transform: 'translateY(-5px)',
     borderColor: '#e53e3e',
     height: 'auto',
+  },
+  serviceCardExpanded: {
+    transform: 'scale(1.1)',
+    transition: 'transform 0.5s ease',
+    zIndex: 1,
   },
   serviceIcon: {
     fontSize: '2rem',
