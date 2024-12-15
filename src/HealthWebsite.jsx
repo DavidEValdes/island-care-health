@@ -440,6 +440,11 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '0.25rem',
+    '@media (min-width: 768px)': {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: '1rem',
+    },
   },
   navLink: {
     fontSize: '0.75rem',
@@ -449,7 +454,11 @@ const styles = {
     textDecoration: 'none',
     transition: 'color 0.3s ease',
     textAlign: 'center',
-    '@media (max-width: 376px)': {
+    '@media (min-width: 768px)': {
+      fontSize: '0.75rem',
+      marginTop: 0,
+    },
+    '@media (max-width: 767px)': {
       fontSize: '0.65rem',
       color: '#666',
       marginTop: '0.25rem',
