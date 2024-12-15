@@ -420,7 +420,7 @@ const styles = {
     right: '0',
     zIndex: '50',
     backgroundColor: '#ffffff',
-    borderBottom: '1px solid #e2e8f0',
+    borderBottom: '2px solid #e53e3e',
     padding: '0.5rem 1.5rem',
     display: 'flex',
     justifyContent: 'space-between',
@@ -512,6 +512,7 @@ const styles = {
     paddingTop: '1.5rem',
     textAlign: 'center',
     padding: '1.5rem 1.5rem 4rem 1.5rem',
+    borderBottom: '2px solid #e53e3e',
     '@media (min-width: 768px)': {
       paddingTop: '5rem',
       padding: '5rem 1.5rem',
