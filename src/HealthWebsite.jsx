@@ -1,12 +1,49 @@
 // src/HealthWebsite.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, Phone, Mail, Calendar, ArrowRight, ChevronDown } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
 
+const MapComponent = () => {
+  const mapRef = useRef(null);
+  const location = { lat: 19.3429, lng: -81.3867 }; // Seven Mile Beach coordinates
 
+  useEffect(() => {
+    // Create map
+    const map = new window.google.maps.Map(mapRef.current, {
+      center: location,
+      zoom: 15,
+      styles: [
+        {
+          featureType: "all",
+          elementType: "geometry",
+          stylers: [{ color: "#f5f5f5" }]
+        },
+        {
+          featureType: "water",
+          elementType: "geometry",
+          stylers: [{ color: "#e9e9e9" }]
+        },
+        {
+          featureType: "water",
+          elementType: "labels.text.fill",
+          stylers: [{ color: "#9e9e9e" }]
+        }
+      ]
+    });
 
+    // Add marker
+    new window.google.maps.Marker({
+      position: location,
+      map: map,
+      title: "Island Care",
+      animation: window.google.maps.Animation.DROP
+    });
+  }, []);
+
+  return <div ref={mapRef} style={{ width: '100%', height: '100%' }} />;
+};
 
 const HealthWebsite = () => {
 
@@ -141,55 +178,53 @@ const scrollToTeam = () => {
       </nav>
 
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroOverlay}></div>
-        <div style={styles.heroContent}>
-          <div style={styles.heroTextBubble}>
-            <h1 style={styles.heroTitle}>
-              Modern Healthcare,
-              <br />
-              <span style={styles.heroTitleHighlight}>Personalized</span> Approach
-            </h1>
-            <p style={styles.heroParagraph}>
-              Experience exceptional care at our boutique physiotherapy studio, 
-              where modern science meets personalized wellness.
-            </p>
-            <div style={styles.heroButtons}>
-              <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                <Button
-                  style={{
-                    ...styles.heroButton,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#c53030';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#e53e3e';
-                  }}
-                >
-                  Book Consultation
-                </Button>
-              </a>
-              <span style={styles.heroAppointment}>
-                By appointment only
-              </span>
-            </div>
-          </div>
-          <div 
-  style={{
-    ...styles.scrollIndicator,
-    opacity: showScrollIndicator ? 1 : 0,
-    pointerEvents: showScrollIndicator ? 'auto' : 'none',
-  }}
-  onClick={scrollToTeam}
->
-  <ChevronDown 
-    style={styles.scrollArrow}
-  />
-  <span style={styles.scrollText}>Meet Our Team</span>
-</div>
+<section style={styles.heroSection}>
+  <div style={styles.heroOverlay}></div>
+  <div style={styles.heroContent}>
+    <div style={styles.heroTextBubble}>
+      <h1 style={styles.heroTitle}>
+        Modern Healthcare,
+        <br />
+        <span style={styles.heroTitleHighlight}>Personalized</span> Approach
+      </h1>
+      <p style={styles.heroParagraph}>
+        Experience exceptional care at our state-of-the-art clinic,
+        where modern & holistic science meets personalized wellness.
+      </p>
+      <div style={styles.heroButtons}>
+        <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+          <Button
+            style={{
+              ...styles.heroButton,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#c53030';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#e53e3e';
+            }}
+          >
+            Book Consultation
+          </Button>
+        </a>
+        <div style={styles.appointmentInfo}>
+          <span style={styles.heroHomeVisit}>🏠 Home visits available across Grand Cayman</span>
         </div>
-      </section>
+      </div>
+    </div>
+    <div
+      style={{
+        ...styles.scrollIndicator,
+        opacity: showScrollIndicator ? 1 : 0,
+        pointerEvents: showScrollIndicator ? 'auto' : 'none',
+      }}
+      onClick={scrollToTeam}
+    >
+      <ChevronDown style={styles.scrollArrow} />
+      <span style={styles.scrollText}>Meet Our Team</span>
+    </div>
+  </div>
+</section>
 
       {/* New Clinicians Section */}
       <section id="clinicians-section" style={styles.cliniciansSection}>
@@ -275,8 +310,13 @@ const scrollToTeam = () => {
         </div>
         <div style={styles.locationMapContainer}>
           <div style={styles.locationMap}>
-            <MapPin style={styles.locationIcon} />
+            <MapComponent />
           </div>
+        </div>
+        <div style={styles.locationAddress}>
+          <p>123 West Bay Road</p>
+          <p>Seven Mile Beach, Grand Cayman</p>
+          <p>Cayman Islands</p>
         </div>
       </section>
 
@@ -541,7 +581,7 @@ scrollText: {
   letterSpacing: '0.1em',
 },
   cliniciansSection: {
-    padding: '8rem 1.5rem',
+    padding: '3rem 1.5rem',
     backgroundColor: '#f7fafc',
   },
   cliniciansHeader: {
@@ -621,7 +661,7 @@ scrollText: {
     lineHeight: '1.5',
   },
   servicesSection: {
-    padding: '8rem 1.5rem',
+    padding: '3rem 1.5rem',
     backgroundColor: '#ffffff',
   },
   servicesHeader: {
@@ -646,59 +686,71 @@ scrollText: {
   },
   servicesGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
     gap: '2rem',
     maxWidth: '1200px',
     margin: '0 auto',
   },
   serviceCard: {
     backgroundColor: '#ffffff',
-    padding: '2rem',
+    padding: '2.5rem',
     borderRadius: '1rem',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    border: '1px solid transparent',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+    border: '1px solid #f0f0f0',
     transition: 'all 0.3s ease',
     textAlign: 'center',
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    gap: '1.5rem',
+    width: '100%',
     height: '100%',
-  },
+    maxWidth: '100%', // Ensures card doesn't overflow its grid cell
+    boxSizing: 'border-box', // Important! Includes padding in width calculation
+},
+
   serviceCardHover: {
     boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
     transform: 'translateY(-5px)',
     borderColor: '#e53e3e',
   },
   serviceIcon: {
-    fontSize: '2.5rem',
-    marginBottom: '1.5rem',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '60px',
-  },
-  serviceTitle: {
-    fontSize: '1.25rem',
-    fontWeight: '500',
-    color: '#1a202c',
+    fontSize: '2rem',
     marginBottom: '1rem',
-  },
-  serviceDescription: {
-    fontSize: '1rem',
-    color: '#718096',
-    marginBottom: '1.5rem',
-    flexGrow: 1,
-  },
-  serviceLearnMore: {
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '0.875rem',
-    color: '#a0aec0',
-    transition: 'all 0.3s ease',
-    gap: '0.5rem',
-    marginTop: 'auto',
-  },
+    alignItems: 'center',
+    height: '40px',
+    width: '40px',
+},
+serviceTitle: {
+  fontSize: '1.25rem',
+  fontWeight: '500',
+  color: '#1a202c',
+  marginBottom: '0.5rem',
+  width: '100%', // Ensure title takes full width
+},
+serviceDescription: {
+  fontSize: '0.875rem',
+  color: '#718096',
+  lineHeight: '1.6',
+  marginBottom: '1.5rem',
+  width: '100%', // Ensure description takes full width
+  flex: '1 1 auto', // This allows the description to grow but maintain alignment
+},
+
+serviceLearnMore: {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '0.875rem',
+  color: '#718096',
+  transition: 'all 0.3s ease',
+  gap: '0.5rem',
+  marginTop: 'auto', // Pushes the learn more to the bottom
+  width: 'auto', // Changed to auto to prevent stretching
+},
   serviceLearnMoreHover: {
     color: '#e53e3e',
   },
@@ -737,10 +789,15 @@ scrollText: {
   locationMapContainer: {
     backgroundColor: '#ffffff',
     borderRadius: '1rem',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
     overflow: 'hidden',
+    height: '500px',
+    maxWidth: '1200px',
+    margin: '0 auto',
   },
   locationMap: {
+    height: '100%',
+    width: '100%',
     height: '500px',
     backgroundColor: '#f7fafc',
     display: 'flex',
@@ -835,7 +892,20 @@ scrollText: {
     width: '1.25rem',
     height: '1.25rem',
     marginRight: '0.75rem',
-  },
+  },appointmentInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    alignItems: 'center',
+},
+
+
+heroHomeVisit: {
+    fontSize: '1rem',
+    color: 'black',
+    letterSpacing: '0.05em',
+    fontStyle: 'italic',
+},
 };
 
 
