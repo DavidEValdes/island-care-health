@@ -971,6 +971,7 @@ const styles = {
     flexDirection: 'column',
     gap: '0.5rem',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    border: '1px solid #e2e8f0',
     '&:hover': {
       transform: 'translateY(-2px)',
       boxShadow: '0 6px 16px rgba(0, 0, 0, 0.08)',
