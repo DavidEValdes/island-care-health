@@ -60,9 +60,6 @@
   .heroParagraph {
     font-size: 1rem;
   }
-  .servicesGrid {
-    grid-template-columns: 1fr;
-  }
   .cliniciansGrid {
     grid-template-columns: 1fr;
   }
@@ -92,11 +89,4 @@
   .contactSubtitle {
     font-size: 0.875rem;
   }
-}
-
-.servicesGrid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
 }
