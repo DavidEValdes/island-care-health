@@ -30,7 +30,7 @@ const HealthWebsite = () => {
   const [isContactButtonHovered, setIsContactButtonHovered] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [flippedCard, setFlippedCard] = useState(null);
+  const [flippedCards, setFlippedCards] = useState([]);
 
   const openModal = (content) => {
     setModalContent(content);
@@ -75,14 +75,46 @@ const HealthWebsite = () => {
     {
       name: "Lisa Cummins",
       title: "Physiotherapist",
-      description: "Experienced physiotherapist specializing in musculoskeletal and neurological cases using the Neurac Method. Double degree in Physical Therapy and Health Education from Florida International University (1999). Offers home visits and ergonomic assessments.",
-      credentials: "PT, HE"
+      shortDescription: "Specialized in musculoskeletal rehabilitation and therapeutic exercise using the innovative Neurac Method.",
+      focus: "Pain-free movement & functional recovery",
+      credentials: "PT, HE",
+      education: "Double degree in Physical Therapy and Health Education - Florida International University (1999)",
+      expertise: [
+        "Musculoskeletal & Neurological Rehabilitation",
+        "Neurac Method Therapy",
+        "Ergonomic Assessment & Workplace Design",
+        "Home Visit Physiotherapy",
+        "Healthcare Management & Consulting"
+      ],
+      detailedDescription: [
+        "Specialized therapeutic exercise using the Neurac Method for pain-free motion",
+        "Expert in biomechanics and occupational movement assessment",
+        "Customized home visit programs for limited mobility patients",
+        "Workplace ergonomic optimization and consulting",
+        "Healthcare facility setup and improvement consulting"
+      ]
     },
     {
       name: "Dr. Gale Zappacosta",
       title: "Chiropractor",
-      description: "Experienced chiropractor focusing on neuro-musculo-skeletal system disorders. Integrates various modalities including myofascial trigger point, dry needling therapy, and specialized techniques for comprehensive patient care.",
-      credentials: "DC"
+      shortDescription: "Expert in comprehensive chiropractic care focusing on neuro-musculo-skeletal system disorders.",
+      focus: "Holistic healing & pain management",
+      credentials: "DC",
+      education: "Doctor of Chiropractic",
+      expertise: [
+        "Chiropractic Adjustments & Manipulations",
+        "Neuro-musculo-skeletal Treatment",
+        "Myofascial & Soft Tissue Therapy",
+        "Nutritional & Lifestyle Guidance",
+        "Integrated Therapeutic Approaches"
+      ],
+      detailedDescription: [
+        "Management of environmental, physical, and neurological disorders",
+        "Advanced soft tissue and neuro-stabilization techniques",
+        "Comprehensive treatment including heat/ice, taping, and bracing",
+        "Dietary and nutritional supplementation guidance",
+        "Physiological therapeutics (ultrasound, micro-current, laser)"
+      ]
     }
   ];
 
@@ -215,11 +247,19 @@ const HealthWebsite = () => {
             <div 
               key={index} 
               style={styles.clinicianCardContainer}
-              onClick={() => setFlippedCard(flippedCard === index ? null : index)}
+              onClick={() => {
+                setFlippedCards(prev => {
+                  if (prev.includes(index)) {
+                    return prev.filter(i => i !== index);
+                  } else {
+                    return [...prev, index];
+                  }
+                });
+              }}
             >
               <div style={{
                 ...styles.clinicianCardInner,
-                transform: flippedCard === index ? 'rotateY(180deg)' : 'rotateY(0)',
+                transform: flippedCards.includes(index) ? 'rotateY(180deg)' : 'rotateY(0)',
               }}>
                 {/* Front of card */}
                 <div style={styles.clinicianCardFront}>
@@ -234,41 +274,38 @@ const HealthWebsite = () => {
                     <h3 style={styles.clinicianName}>{clinician.name}</h3>
                     <p style={styles.clinicianCredentials}>{clinician.credentials}</p>
                     <h4 style={styles.clinicianTitle}>{clinician.title}</h4>
-                    <p style={styles.clinicianDescription}>{clinician.description}</p>
+                    <p style={styles.clinicianFocus}>{clinician.focus}</p>
+                    <p style={styles.clinicianDescription}>{clinician.shortDescription}</p>
+                    <div style={styles.clinicianLearnMore}>
+                      <span>Click to see full profile</span>
+                      <ArrowRight size={16} />
+                    </div>
                   </div>
                 </div>
                 {/* Back of card */}
                 <div style={styles.clinicianCardBack}>
                   <div style={styles.clinicianBackContent}>
-                    <h3 style={styles.clinicianBackTitle}>Areas of Expertise</h3>
-                    {index === 0 ? (
-                      <>
-                        <ul style={styles.clinicianBackList}>
-                          <li>Musculoskeletal Rehabilitation</li>
-                          <li>Neurac Method Treatment</li>
-                          <li>Ergonomic Assessments</li>
-                          <li>Home Visit Therapy</li>
-                          <li>Healthcare Management</li>
-                        </ul>
-                        <p style={styles.clinicianBackText}>
-                          Specialized in therapeutic exercise and ergonomic assessments with extensive experience in both clinical and home settings.
-                        </p>
-                      </>
-                    ) : (
-                      <>
-                        <ul style={styles.clinicianBackList}>
-                          <li>Chiropractic Adjustments</li>
-                          <li>Myofascial Trigger Point Therapy</li>
-                          <li>Dry Needling</li>
-                          <li>Neuro-stabilization Techniques</li>
-                          <li>Nutritional Guidance</li>
-                        </ul>
-                        <p style={styles.clinicianBackText}>
-                          Expert in comprehensive care combining various therapeutic modalities for optimal patient outcomes.
-                        </p>
-                      </>
-                    )}
-                    <p style={styles.clinicianBackNote}>Click to flip back</p>
+                    <div style={styles.clinicianBackHeader}>
+                      <h3 style={styles.clinicianBackName}>{clinician.name}</h3>
+                      <p style={styles.clinicianBackEducation}>{clinician.education}</p>
+                    </div>
+                    <div style={styles.clinicianBackSection}>
+                      <h4 style={styles.clinicianBackSubtitle}>Areas of Expertise</h4>
+                      <ul style={styles.clinicianBackList}>
+                        {clinician.expertise.map((item, i) => (
+                          <li key={i} style={styles.clinicianBackListItem}>• {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div style={styles.clinicianBackSection}>
+                      <h4 style={styles.clinicianBackSubtitle}>Specialized Services</h4>
+                      <ul style={styles.clinicianBackDetailsList}>
+                        {clinician.detailedDescription.map((item, i) => (
+                          <li key={i} style={styles.clinicianBackListItem}>• {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <p style={styles.clinicianBackNote}>Click to return</p>
                   </div>
                 </div>
               </div>
@@ -806,51 +843,51 @@ const styles = {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center',
-    gap: '0.75rem',
     padding: '2rem',
-    overflowY: 'auto',
-    '@media (max-width: 380px)': {
-      gap: '0.5rem',
-      padding: '1.5rem',
-    },
   },
-  clinicianBackTitle: {
+  clinicianBackHeader: {
+    textAlign: 'center',
+    marginBottom: '1.5rem',
+    borderBottom: '1px solid #e2e8f0',
+    width: '100%',
+  },
+  clinicianBackName: {
     fontSize: '1.5rem',
     fontWeight: '600',
     color: '#2D3748',
+    marginBottom: '0.5rem',
+  },
+  clinicianBackEducation: {
+    fontSize: '0.9rem',
+    color: '#718096',
+    lineHeight: '1.4',
+    marginBottom: '1rem',
+  },
+  clinicianBackSection: {
+    width: '100%',
+    marginBottom: '1.5rem',
+  },
+  clinicianBackSubtitle: {
+    fontSize: '1.1rem',
+    fontWeight: '600',
+    color: '#2D3748',
     marginBottom: '0.75rem',
-    '@media (max-width: 380px)': {
-      fontSize: '1.25rem',
-      marginBottom: '0.5rem',
-    },
+    textAlign: 'left',
   },
   clinicianBackList: {
     listStyle: 'none',
     padding: 0,
-    margin: '0 0 0.75rem 0',
-    color: '#4A5568',
-    fontSize: '1rem',
-    lineHeight: '1.6',
-    textAlign: 'left',
-    '@media (max-width: 380px)': {
-      fontSize: '0.9rem',
-      lineHeight: '1.5',
-      margin: '0 0 0.5rem 0',
-    },
+    margin: 0,
   },
-  clinicianBackText: {
-    color: '#718096',
+  clinicianBackListItem: {
     fontSize: '0.9rem',
-    lineHeight: '1.6',
-    marginBottom: '1rem',
-    '@media (max-width: 380px)': {
-      fontSize: '0.85rem',
-      lineHeight: '1.5',
-      marginBottom: '0.75rem',
-    },
+    color: '#4A5568',
+    marginBottom: '0.5rem',
+    textAlign: 'left',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
   },
   clinicianBackNote: {
     color: '#A0AEC0',
@@ -1300,6 +1337,13 @@ const styles = {
     border: 'none',
     fontSize: '1.25rem',
     cursor: 'pointer',
+  },
+  clinicianFocus: {
+    fontSize: '0.9rem',
+    color: '#e53e3e',
+    fontWeight: '500',
+    marginBottom: '0.75rem',
+    fontStyle: 'italic',
   },
 };
 
