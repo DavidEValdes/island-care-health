@@ -5,6 +5,19 @@ import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
 
+// Modal component
+const Modal = ({ isOpen, onClose, content }) => {
+  if (!isOpen) return null;
+  return (
+    <div style={styles.modalOverlay} onClick={onClose}>
+      <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <button style={styles.modalCloseButton} onClick={onClose}>Close</button>
+        {content}
+      </div>
+    </div>
+  );
+};
+
 const HealthWebsite = () => {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const [hoveredNavLink, setHoveredNavLink] = useState(null);
@@ -12,6 +25,18 @@ const HealthWebsite = () => {
   const [hoveredLearnMore, setHoveredLearnMore] = useState(null);
   const [hoveredContactLink, setHoveredContactLink] = useState(null);
   const [isContactButtonHovered, setIsContactButtonHovered] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (content) => {
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalContent(null);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -217,10 +242,20 @@ const HealthWebsite = () => {
               }}
               onMouseEnter={() => setHoveredService(index)}
               onMouseLeave={() => setHoveredService(null)}
+              onClick={() => openModal(
+                <div>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <p>Additional details about {service.title}...</p>
+                </div>
+              )}
             >
               <div style={styles.serviceIcon}>{service.icon}</div>
               <h3 style={styles.serviceTitle}>{service.title}</h3>
-              <p style={styles.serviceDescription}>{service.description}</p>
+              <p style={{
+                ...styles.serviceDescription,
+                ...(hoveredService === index ? styles.serviceCardHoverDescription : {}),
+              }}>{service.description}</p>
               <div
                 style={{
                   ...styles.serviceLearnMore,
@@ -355,6 +390,9 @@ const HealthWebsite = () => {
           </a>
         </div>
       </section>
+
+      {/* Modal for service details */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} content={modalContent} />
     </div>
   );
 };
@@ -650,7 +688,9 @@ const styles = {
     padding: '2.5rem',
     borderRadius: '1rem',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
-    border: '1px solid #f0f0f0',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#f0f0f0',
     transition: 'all 0.3s ease',
     textAlign: 'center',
     cursor: 'pointer',
@@ -660,13 +700,16 @@ const styles = {
     gap: '1.5rem',
     width: '100%',
     height: '100%',
-    maxWidth: '100%', // Ensures card doesn't overflow its grid cell
-    boxSizing: 'border-box', // Important! Includes padding in width calculation
+    maxWidth: '100%',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    position: 'relative',
   },
   serviceCardHover: {
     boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
     transform: 'translateY(-5px)',
     borderColor: '#e53e3e',
+    height: 'auto',
   },
   serviceIcon: {
     fontSize: '2rem',
@@ -682,15 +725,20 @@ const styles = {
     fontWeight: '500',
     color: '#1a202c',
     marginBottom: '0.5rem',
-    width: '100%', // Ensure title takes full width
+    width: '100%',
   },
   serviceDescription: {
     fontSize: '0.875rem',
     color: '#718096',
     lineHeight: '1.6',
     marginBottom: '1.5rem',
-    width: '100%', // Ensure description takes full width
-    flex: '1 1 auto', // This allows the description to grow but maintain alignment
+    width: '100%',
+    flex: '1 1 auto',
+    opacity: 0,
+    transition: 'opacity 0.3s ease',
+  },
+  serviceCardHoverDescription: {
+    opacity: 1,
   },
   serviceLearnMore: {
     display: 'flex',
@@ -700,8 +748,8 @@ const styles = {
     color: '#718096',
     transition: 'all 0.3s ease',
     gap: '0.5rem',
-    marginTop: 'auto', // Pushes the learn more to the bottom
-    width: 'auto', // Changed to auto to prevent stretching
+    marginTop: 'auto',
+    width: 'auto',
   },
   serviceLearnMoreHover: {
     color: '#e53e3e',
@@ -864,6 +912,36 @@ const styles = {
     color: 'black',
     letterSpacing: '0.05em',
     fontStyle: 'italic',
+  },
+  modalOverlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1000,
+  },
+  modalContent: {
+    backgroundColor: '#ffffff',
+    padding: '2rem',
+    borderRadius: '0.5rem',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    maxWidth: '500px',
+    width: '100%',
+    position: 'relative',
+  },
+  modalCloseButton: {
+    position: 'absolute',
+    top: '1rem',
+    right: '1rem',
+    backgroundColor: 'transparent',
+    border: 'none',
+    fontSize: '1.25rem',
+    cursor: 'pointer',
   },
 };
 
