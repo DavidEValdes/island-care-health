@@ -1103,9 +1103,11 @@ const styles = {
     backgroundColor: '#ffffff',
     borderRadius: '0.75rem',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+    border: '1px solid #e2e8f0',
     '&:hover': {
       transform: 'translateY(-2px)',
       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+      borderColor: '#e53e3e',
     },
   },
   contactLinkHover: {
