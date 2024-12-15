@@ -410,10 +410,9 @@ const styles = {
     left: '0',
     right: '0',
     zIndex: '50',
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(4px)',
+    backgroundColor: '#ffffff',
     borderBottom: '1px solid #e2e8f0',
-    padding: '0.75rem 1.5rem',
+    padding: '0.5rem 1.5rem',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -425,11 +424,11 @@ const styles = {
     flex: '1',
   },
   navLogo: {
-    height: '65px',
+    height: '75px',
     width: 'auto',
     objectFit: 'contain',
     '@media (max-width: 376px)': {
-      height: '50px',
+      height: '55px',
     },
   },
   navRight: {
