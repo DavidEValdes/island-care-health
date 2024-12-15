@@ -362,7 +362,7 @@ const HealthWebsite = () => {
 const styles = {
   container: {
     minHeight: '100vh',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f9fafb',
     fontFamily: 'Arial, sans-serif',
   },
   nav: {
@@ -373,7 +373,7 @@ const styles = {
     zIndex: '50',
     backgroundColor: 'rgba(255, 255, 255, 0.95)',
     backdropFilter: 'blur(4px)',
-    borderBottom: '1px solid #f7fafc',
+    borderBottom: '1px solid #e2e8f0',
     padding: '1rem 1.5rem',
     display: 'flex',
     justifyContent: 'space-between',
@@ -386,8 +386,8 @@ const styles = {
   },
   navBrand: {
     color: '#e53e3e',
-    fontWeight: '300',
-    fontSize: '1.25rem',
+    fontWeight: 'normal',
+    fontSize: '1.5rem',
     letterSpacing: '0.05em',
   },
   navRight: {
@@ -396,7 +396,7 @@ const styles = {
     gap: '2rem',
   },
   navLink: {
-    fontSize: '0.875rem',
+    fontSize: '1rem',
     letterSpacing: '0.05em',
     color: '#4A5568',
     textDecoration: 'none',
@@ -417,6 +417,7 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   },
   heroButtonIcon: {
     marginRight: '0.5rem',
@@ -465,7 +466,7 @@ const styles = {
     display: 'inline-block',
   },
   heroTitle: {
-    fontSize: '3.75rem',
+    fontSize: '3.5rem',
     fontWeight: '300',
     lineHeight: '1.25',
     letterSpacing: '-0.025em',
@@ -500,6 +501,7 @@ const styles = {
     textDecoration: 'none',
     cursor: 'pointer',
     border: 'none',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   },
   heroAppointment: {
     fontSize: '0.875rem',
@@ -518,20 +520,20 @@ const styles = {
     cursor: 'pointer',
     zIndex: 10,
     transition: 'opacity 0.3s ease',
+    animation: 'bounce 2s infinite',
   },
   scrollArrow: {
     color: '#e53e3e',
-    animation: 'bounce 2s infinite',
     width: '40px',
     height: '40px',
-},
-scrollText: {
-  color: '#4A5568',
-  fontSize: '0.875rem',
-  fontWeight: '500',
-  textTransform: 'uppercase',
-  letterSpacing: '0.1em',
-},
+  },
+  scrollText: {
+    color: '#4A5568',
+    fontSize: '0.875rem',
+    fontWeight: '500',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+  },
   cliniciansSection: {
     padding: '3rem 1.5rem',
     backgroundColor: '#f7fafc',
@@ -544,7 +546,7 @@ scrollText: {
     gap: '1rem',
   },
   cliniciansTitle: {
-    fontSize: '2.25rem',
+    fontSize: '2.5rem',
     fontWeight: '300',
     letterSpacing: '-0.025em',
     color: '#1a202c',
@@ -624,7 +626,7 @@ scrollText: {
     gap: '1rem',
   },
   servicesTitle: {
-    fontSize: '2.25rem',
+    fontSize: '2.5rem',
     fontWeight: '300',
     letterSpacing: '-0.025em',
     color: '#1a202c',
@@ -660,8 +662,7 @@ scrollText: {
     height: '100%',
     maxWidth: '100%', // Ensures card doesn't overflow its grid cell
     boxSizing: 'border-box', // Important! Includes padding in width calculation
-},
-
+  },
   serviceCardHover: {
     boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
     transform: 'translateY(-5px)',
@@ -675,34 +676,33 @@ scrollText: {
     alignItems: 'center',
     height: '40px',
     width: '40px',
-},
-serviceTitle: {
-  fontSize: '1.25rem',
-  fontWeight: '500',
-  color: '#1a202c',
-  marginBottom: '0.5rem',
-  width: '100%', // Ensure title takes full width
-},
-serviceDescription: {
-  fontSize: '0.875rem',
-  color: '#718096',
-  lineHeight: '1.6',
-  marginBottom: '1.5rem',
-  width: '100%', // Ensure description takes full width
-  flex: '1 1 auto', // This allows the description to grow but maintain alignment
-},
-
-serviceLearnMore: {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '0.875rem',
-  color: '#718096',
-  transition: 'all 0.3s ease',
-  gap: '0.5rem',
-  marginTop: 'auto', // Pushes the learn more to the bottom
-  width: 'auto', // Changed to auto to prevent stretching
-},
+  },
+  serviceTitle: {
+    fontSize: '1.25rem',
+    fontWeight: '500',
+    color: '#1a202c',
+    marginBottom: '0.5rem',
+    width: '100%', // Ensure title takes full width
+  },
+  serviceDescription: {
+    fontSize: '0.875rem',
+    color: '#718096',
+    lineHeight: '1.6',
+    marginBottom: '1.5rem',
+    width: '100%', // Ensure description takes full width
+    flex: '1 1 auto', // This allows the description to grow but maintain alignment
+  },
+  serviceLearnMore: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '0.875rem',
+    color: '#718096',
+    transition: 'all 0.3s ease',
+    gap: '0.5rem',
+    marginTop: 'auto', // Pushes the learn more to the bottom
+    width: 'auto', // Changed to auto to prevent stretching
+  },
   serviceLearnMoreHover: {
     color: '#e53e3e',
   },
@@ -720,13 +720,13 @@ serviceLearnMore: {
   },
   locationHeader: {
     textAlign: 'center',
-    marginBottom: '3rem',
+    marginBottom: '5rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
   },
   locationTitle: {
-    fontSize: '2.25rem',
+    fontSize: '2.5rem',
     fontWeight: '300',
     letterSpacing: '-0.025em',
     color: '#1a202c',
@@ -765,17 +765,17 @@ serviceLearnMore: {
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
   contactSection: {
-    padding: '4rem 1.5rem',
+    padding: '2rem 1.5rem',
   },
   contactHeader: {
     textAlign: 'center',
-    marginBottom: '3rem',
+    marginBottom: '2rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
   },
   contactTitle: {
-    fontSize: '2.25rem',
+    fontSize: '2.5rem',
     fontWeight: '300',
     letterSpacing: '-0.025em',
     color: '#1a202c',
@@ -827,6 +827,7 @@ serviceLearnMore: {
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
     border: 'none',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   },
   contactInfo: {
     marginTop: '5rem',
@@ -851,21 +852,19 @@ serviceLearnMore: {
     width: '1.25rem',
     height: '1.25rem',
     marginRight: '0.75rem',
-  },appointmentInfo: {
+  },
+  appointmentInfo: {
     display: 'flex',
     flexDirection: 'column',
     gap: '0.5rem',
     alignItems: 'center',
-},
-
-
-heroHomeVisit: {
+  },
+  heroHomeVisit: {
     fontSize: '1rem',
     color: 'black',
     letterSpacing: '0.05em',
     fontStyle: 'italic',
-},
+  },
 };
-
 
 export default HealthWebsite;
