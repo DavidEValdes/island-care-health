@@ -265,8 +265,9 @@ const HealthWebsite = () => {
           </div>
         </div>
         <div style={styles.locationAddress}>
-          <p>123 West Bay Road</p>
-          <p>Seven Mile Beach, Grand Cayman</p>
+          <p>Island Care Health</p>
+          <p>Countryside Shopping Village</p>
+          <p>33 Hirst Rd, Savannah KY1-1506</p>
           <p>Cayman Islands</p>
         </div>
       </section>
@@ -758,13 +759,17 @@ serviceLearnMore: {
     color: '#4A5568',
     fontSize: '1.1rem',
     lineHeight: '1.8',
+    padding: '1rem',
+    backgroundColor: '#f9fafb',
+    borderRadius: '0.5rem',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
   contactSection: {
-    padding: '8rem 1.5rem',
+    padding: '4rem 1.5rem',
   },
   contactHeader: {
     textAlign: 'center',
-    marginBottom: '5rem',
+    marginBottom: '3rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
@@ -783,26 +788,30 @@ serviceLearnMore: {
   contactForm: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '2rem',
+    gap: '1rem',
     maxWidth: '600px',
     margin: '0 auto',
+    padding: '1.5rem',
+    backgroundColor: '#ffffff',
+    borderRadius: '0.5rem',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
   contactInput: {
     width: '100%',
-    padding: '1rem 1.5rem',
+    padding: '1rem',
     backgroundColor: '#f9fafb',
-    border: 'none',
-    borderRadius: '0.75rem',
+    border: '1px solid #e2e8f0',
+    borderRadius: '0.5rem',
     textAlign: 'center',
     transition: 'outline 0.2s ease',
     fontSize: '1rem',
   },
   contactTextarea: {
     width: '100%',
-    padding: '1rem 1.5rem',
+    padding: '1rem',
     backgroundColor: '#f9fafb',
-    border: 'none',
-    borderRadius: '0.75rem',
+    border: '1px solid #e2e8f0',
+    borderRadius: '0.5rem',
     textAlign: 'center',
     resize: 'vertical',
     transition: 'outline 0.2s ease',
@@ -812,8 +821,8 @@ serviceLearnMore: {
     width: '100%',
     backgroundColor: '#e53e3e',
     color: '#ffffff',
-    padding: '1.5rem',
-    borderRadius: '0.75rem',
+    padding: '1rem',
+    borderRadius: '0.5rem',
     fontSize: '1.125rem',
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
