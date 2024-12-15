@@ -56,7 +56,14 @@ const HealthWebsite = () => {
   const scrollToTeam = () => {
     const cliniciansSection = document.querySelector('#clinicians-section');
     if (cliniciansSection) {
-      cliniciansSection.scrollIntoView({ behavior: 'smooth' });
+      const offset = 50; // Reduced from 100 to 50 pixels
+      const elementPosition = cliniciansSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -181,17 +188,13 @@ const HealthWebsite = () => {
               </div>
             </div>
           </div>
-          <div
-            style={{
-              ...styles.scrollIndicator,
-              opacity: showScrollIndicator ? 1 : 0,
-              pointerEvents: showScrollIndicator ? 'auto' : 'none',
-            }}
-            onClick={scrollToTeam}
-          >
-            <ChevronDown style={styles.scrollArrow} />
-            <span style={styles.scrollText}>Meet Our Team</span>
-          </div>
+        </div>
+        <div
+          style={styles.scrollIndicator}
+          onClick={scrollToTeam}
+        >
+          <ChevronDown style={styles.scrollArrow} />
+          <span style={styles.scrollText}>Meet Our Team</span>
         </div>
       </section>
 
@@ -463,12 +466,17 @@ const styles = {
     position: 'relative',
     minHeight: '100vh',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     background: 'linear-gradient(to bottom right, #f9fafb, #ffffff)',
-    paddingTop: '5rem',
+    paddingTop: '1.5rem',
     textAlign: 'center',
-    padding: '5rem 1.5rem',
+    padding: '1.5rem 1.5rem 4rem 1.5rem',
+    '@media (min-width: 768px)': {
+      paddingTop: '5rem',
+      padding: '5rem 1.5rem',
+    },
   },
   heroOverlay: {
     position: 'absolute',
@@ -483,51 +491,71 @@ const styles = {
     zIndex: 0,
   },
   heroContent: {
-    maxWidth: '768px',
+    maxWidth: '700px',
     margin: '0 auto',
     position: 'relative',
     zIndex: 2,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '100vh',
+    flex: 1,
     justifyContent: 'center',
+    paddingTop: '0.5rem',
+    '@media (min-width: 768px)': {
+      maxWidth: '768px',
+      paddingTop: 0,
+    },
   },
   heroTextBubble: {
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    padding: '2rem',
+    padding: '1.75rem',
     borderRadius: '1rem',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
     display: 'inline-block',
+    '@media (min-width: 768px)': {
+      padding: '2rem',
+    },
   },
   heroTitle: {
-    fontSize: '3.5rem',
+    fontSize: '3rem',
     fontWeight: '300',
-    lineHeight: '1.25',
+    lineHeight: '1.2',
     letterSpacing: '-0.025em',
     color: '#1a202c',
+    '@media (min-width: 768px)': {
+      fontSize: '3.5rem',
+      lineHeight: '1.25',
+    },
   },
   heroTitleHighlight: {
     color: '#e53e3e',
   },
   heroParagraph: {
-    fontSize: '1.25rem',
+    fontSize: '1.1rem',
     color: '#2d3748',
     fontWeight: '300',
     letterSpacing: '0.05em',
-    marginBottom: '2rem',
+    marginBottom: '1.75rem',
+    maxWidth: '600px',
+    '@media (min-width: 768px)': {
+      fontSize: '1.25rem',
+      marginBottom: '2rem',
+    },
   },
   heroButtons: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '1rem',
+    gap: '0.75rem',
+    '@media (min-width: 768px)': {
+      gap: '1rem',
+    },
   },
   heroButton: {
     backgroundColor: '#e53e3e',
     color: '#ffffff',
-    padding: '1.5rem 2rem',
-    fontSize: '1.125rem',
+    padding: '1.25rem 1.75rem',
+    fontSize: '1.1rem',
     borderRadius: '9999px',
     transition: 'background-color 0.3s ease',
     display: 'flex',
@@ -537,6 +565,10 @@ const styles = {
     cursor: 'pointer',
     border: 'none',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    '@media (min-width: 768px)': {
+      padding: '1.5rem 2rem',
+      fontSize: '1.125rem',
+    },
   },
   heroAppointment: {
     fontSize: '0.875rem',
@@ -544,23 +576,30 @@ const styles = {
     letterSpacing: '0.05em',
   },
   scrollIndicator: {
-    position: 'fixed',
-    bottom: '2rem',
-    left: '50%',
-    transform: 'translateX(-50%)',
+    position: 'relative',
+    marginTop: 'auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     gap: '0.5rem',
     cursor: 'pointer',
-    zIndex: 10,
+    zIndex: 20,
     transition: 'opacity 0.3s ease',
     animation: 'bounce 2s infinite',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    padding: '0.75rem 1.5rem',
+    borderRadius: '1rem',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+    marginBottom: '2rem',
   },
   scrollArrow: {
     color: '#e53e3e',
-    width: '40px',
-    height: '40px',
+    width: '32px',
+    height: '32px',
+    transition: 'transform 0.3s ease',
+    '&:hover': {
+      transform: 'translateY(5px)',
+    },
   },
   scrollText: {
     color: '#4A5568',
@@ -568,6 +607,7 @@ const styles = {
     fontWeight: '500',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
+    whiteSpace: 'nowrap',
   },
   cliniciansSection: {
     padding: '3rem 1.5rem',
