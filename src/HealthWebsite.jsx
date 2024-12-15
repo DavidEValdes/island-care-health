@@ -124,17 +124,6 @@ const HealthWebsite = () => {
           <img src={logo} alt="Island Care Health" style={styles.navLogo} />
         </div>
         <div style={styles.navRight}>
-          <a
-            href="tel:1-345-925-6677"
-            style={{
-              ...styles.navLink,
-              ...(hoveredNavLink === 'phone' ? styles.navLinkHover : {}),
-            }}
-            onMouseEnter={() => setHoveredNavLink('phone')}
-            onMouseLeave={() => setHoveredNavLink(null)}
-          >
-            +1 345 925 6677
-          </a>
           <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
             <Button
               style={{
@@ -150,6 +139,17 @@ const HealthWebsite = () => {
               <Calendar style={styles.heroButtonIcon} />
               Book Now
             </Button>
+          </a>
+          <a
+            href="tel:1-345-925-6677"
+            style={{
+              ...styles.navLink,
+              ...(hoveredNavLink === 'phone' ? styles.navLinkHover : {}),
+            }}
+            onMouseEnter={() => setHoveredNavLink('phone')}
+            onMouseLeave={() => setHoveredNavLink(null)}
+          >
+            +1 345 925 6677
           </a>
         </div>
       </nav>
@@ -416,6 +416,10 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    '@media (max-width: 376px)': {
+      flexDirection: 'row',
+      padding: '0.5rem',
+    },
   },
   navLeft: {
     display: 'flex',
@@ -433,15 +437,24 @@ const styles = {
   },
   navRight: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    gap: '1.5rem',
+    gap: '0.25rem',
   },
   navLink: {
-    fontSize: '1rem',
+    fontSize: '0.75rem',
+    fontWeight: 'bold',
     letterSpacing: '0.05em',
     color: '#4A5568',
     textDecoration: 'none',
     transition: 'color 0.3s ease',
+    textAlign: 'center',
+    '@media (max-width: 376px)': {
+      fontSize: '0.65rem',
+      color: '#666',
+      marginTop: '0.25rem',
+      width: '100%',
+    },
   },
   navLinkHover: {
     color: '#e53e3e',
@@ -460,6 +473,10 @@ const styles = {
     justifyContent: 'center',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     fontSize: '0.9rem',
+    '@media (max-width: 376px)': {
+      fontSize: '0.85rem',
+      padding: '0.4rem 0.9rem',
+    },
   },
   heroButtonIcon: {
     marginRight: '0.5rem',
