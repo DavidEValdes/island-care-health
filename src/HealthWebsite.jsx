@@ -293,7 +293,7 @@ const HealthWebsite = () => {
                       <h4 style={styles.clinicianBackSubtitle}>Areas of Expertise</h4>
                       <ul style={styles.clinicianBackList}>
                         {clinician.expertise.map((item, i) => (
-                          <li key={i} style={styles.clinicianBackListItem}>• {item}</li>
+                          <li key={i} style={styles.clinicianBackListItem}>{item}</li>
                         ))}
                       </ul>
                     </div>
@@ -301,7 +301,7 @@ const HealthWebsite = () => {
                       <h4 style={styles.clinicianBackSubtitle}>Specialized Services</h4>
                       <ul style={styles.clinicianBackDetailsList}>
                         {clinician.detailedDescription.map((item, i) => (
-                          <li key={i} style={styles.clinicianBackListItem}>• {item}</li>
+                          <li key={i} style={styles.clinicianBackDetailsItem}>{item}</li>
                         ))}
                       </ul>
                     </div>
@@ -801,10 +801,10 @@ const styles = {
     height: '650px',
     width: '100%',
     '@media (max-width: 768px)': {
-      height: '580px',
+      height: '600px',
     },
     '@media (max-width: 380px)': {
-      height: '500px',
+      height: '570px',
     },
   },
   clinicianCardInner: {
@@ -821,8 +821,10 @@ const styles = {
     backfaceVisibility: 'hidden',
     backgroundColor: '#ffffff',
     borderRadius: '1.5rem',
-    overflow: 'hidden',
+    overflow: 'visible',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+    display: 'flex',
+    flexDirection: 'column',
   },
   clinicianCardBack: {
     position: 'absolute',
@@ -836,64 +838,105 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    overflow: 'hidden',
   },
   clinicianBackContent: {
-    width: '100%',
-    height: '100%',
+    width: '90%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '2rem',
+    gap: '0.75rem',
   },
   clinicianBackHeader: {
     textAlign: 'center',
-    marginBottom: '1.5rem',
-    borderBottom: '1px solid #e2e8f0',
+    marginBottom: '0.75rem',
+    borderBottom: '2px solid #e53e3e',
     width: '100%',
+    paddingBottom: '0.5rem',
   },
   clinicianBackName: {
-    fontSize: '1.5rem',
-    fontWeight: '600',
-    color: '#2D3748',
-    marginBottom: '0.5rem',
-  },
-  clinicianBackEducation: {
-    fontSize: '0.9rem',
-    color: '#718096',
-    lineHeight: '1.4',
-    marginBottom: '1rem',
-  },
-  clinicianBackSection: {
-    width: '100%',
-    marginBottom: '1.5rem',
-  },
-  clinicianBackSubtitle: {
     fontSize: '1.1rem',
     fontWeight: '600',
     color: '#2D3748',
-    marginBottom: '0.75rem',
-    textAlign: 'left',
+    marginBottom: '0.25rem',
+  },
+  clinicianBackEducation: {
+    fontSize: '0.75rem',
+    color: '#718096',
+    lineHeight: '1.2',
+    textAlign: 'center',
+  },
+  clinicianBackSection: {
+    width: '100%',
+    marginBottom: '1rem',
+    textAlign: 'center',
+    padding: '0 1rem',
+  },
+  clinicianBackSubtitle: {
+    fontSize: '0.9rem',
+    fontWeight: '600',
+    color: '#2D3748',
+    marginBottom: '0.5rem',
   },
   clinicianBackList: {
     listStyle: 'none',
-    padding: 0,
-    margin: 0,
+    padding: '0 1rem',
+    margin: '0 auto',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    maxWidth: '90%',
+  },
+  clinicianBackDetailsList: {
+    listStyle: 'none',
+    padding: '0 1.5rem',
+    margin: '0',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.25rem',
   },
   clinicianBackListItem: {
-    fontSize: '0.9rem',
+    fontSize: '0.8rem',
     color: '#4A5568',
-    marginBottom: '0.5rem',
-    textAlign: 'left',
+    lineHeight: '1.4',
+    textAlign: 'center',
+    fontWeight: '400',
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: '0.5rem',
+    '&::before': {
+      content: '"•"',
+      color: '#e53e3e',
+    },
+  },
+  clinicianBackDetailsItem: {
+    fontSize: '0.8rem',
+    color: '#4A5568',
+    lineHeight: '1.4',
+    textAlign: 'left',
+    fontWeight: '400',
+    paddingLeft: '1.5rem',
+    position: 'relative',
+    marginBottom: '0.25rem',
+    '&::before': {
+      content: '"•"',
+      color: '#e53e3e',
+      position: 'absolute',
+      left: '0.5rem',
+      fontSize: '1.2rem',
+      lineHeight: '1.2',
+    },
   },
   clinicianBackNote: {
     color: '#A0AEC0',
-    fontSize: '0.8rem',
+    fontSize: '0.7rem',
     fontStyle: 'italic',
     marginTop: 'auto',
+    textAlign: 'center',
+    paddingTop: '0.75rem',
   },
   clinicianImageContainer: {
     width: '100%',
@@ -918,6 +961,12 @@ const styles = {
     padding: '1.5rem',
     backgroundColor: '#ffffff',
     position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    flex: 1,
+    justifyContent: 'space-between',
   },
   clinicianName: {
     fontSize: '1.5rem',
@@ -925,6 +974,7 @@ const styles = {
     color: '#1a202c',
     marginBottom: '0.25rem',
     letterSpacing: '-0.025em',
+    width: '100%',
   },
   clinicianCredentials: {
     fontSize: '0.75rem',
@@ -933,6 +983,7 @@ const styles = {
     marginBottom: '0.5rem',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
+    width: '100%',
   },
   clinicianTitle: {
     fontSize: '1rem',
@@ -940,12 +991,44 @@ const styles = {
     fontWeight: '500',
     marginBottom: '0.75rem',
     letterSpacing: '0.025em',
+    width: '100%',
   },
   clinicianDescription: {
     fontSize: '0.875rem',
     color: '#718096',
     lineHeight: '1.5',
     maxWidth: '90%',
+    margin: '0 auto 1rem auto',
+  },
+  clinicianFocus: {
+    fontSize: '0.9rem',
+    color: '#e53e3e',
+    fontWeight: '500',
+    marginBottom: '0.75rem',
+    fontStyle: 'italic',
+    width: '100%',
+  },
+  clinicianLearnMore: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.35rem',
+    fontSize: '0.8rem',
+    color: '#94A3B8',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    fontWeight: '400',
+    width: '100%',
+    padding: '0.5rem 0',
+    marginTop: 'auto',
+    backgroundColor: '#ffffff',
+    position: 'relative',
+    zIndex: '10',
+    letterSpacing: '0.02em',
+    '&:hover': {
+      color: '#e53e3e',
+      gap: '0.5rem',
+    },
   },
   servicesSection: {
     padding: '2rem 1rem',
@@ -1337,13 +1420,6 @@ const styles = {
     border: 'none',
     fontSize: '1.25rem',
     cursor: 'pointer',
-  },
-  clinicianFocus: {
-    fontSize: '0.9rem',
-    color: '#e53e3e',
-    fontWeight: '500',
-    marginBottom: '0.75rem',
-    fontStyle: 'italic',
   },
 };
 
