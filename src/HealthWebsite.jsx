@@ -1,6 +1,6 @@
 // src/HealthWebsite.js
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, Calendar, ArrowRight, ChevronDown } from 'lucide-react';
+import { Phone, Mail, Calendar, ArrowRight, ChevronDown, ArrowLeft } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
@@ -90,7 +90,8 @@ const HealthWebsite = () => {
         "Specialized therapeutic exercise using the Neurac Method for pain-free motion",
         "Expert in biomechanics and occupational movement assessment",
         "Customized home visit programs for limited mobility patients",
-        "Workplace ergonomic optimization and consulting"
+        "Workplace ergonomic optimization and consulting",
+        "Healthcare facility setup and improvement consulting"
       ]
     },
     {
@@ -325,7 +326,7 @@ const HealthWebsite = () => {
                         ))}
                       </ul>
                     </div>
-                    <p style={styles.clinicianBackNote}>Click to return</p>
+                    <ArrowLeft style={styles.clinicianBackArrow} />
                   </div>
                 </div>
               </div>
@@ -869,6 +870,7 @@ const styles = {
     gap: '0.5rem',
     padding: '1rem 0',
     boxSizing: 'border-box',
+    position: 'relative',
     '@media (max-width: 380px)': {
       width: '95%',
       padding: '0.35rem 0',
@@ -877,6 +879,21 @@ const styles = {
     '@media (max-width: 375px)': {
       padding: '0.25rem 0',
       gap: '0.05rem',
+    },
+  },
+  clinicianBackArrow: {
+    position: 'absolute',
+    top: '1rem',
+    left: '0.35rem',
+    color: '#A0AEC0',
+    transform: 'rotate(0deg)',
+    width: '20px',
+    height: '20px',
+    '@media (max-width: 380px)': {
+      top: '0.75rem',
+      left: '0.2rem',
+      width: '16px',
+      height: '16px',
     },
   },
   clinicianBackHeader: {
@@ -1021,20 +1038,6 @@ const styles = {
     lineHeight: '1',
     flexShrink: 0,
     marginTop: '1px',
-  },
-  clinicianBackNote: {
-    color: '#A0AEC0',
-    fontSize: '0.7rem',
-    fontStyle: 'italic',
-    textAlign: 'center',
-    padding: '0.35rem 0',
-    marginTop: 'auto',
-    width: '100%',
-    '@media (max-width: 380px)': {
-      fontSize: '0.6rem',
-      padding: '0.15rem 0',
-      marginTop: 'auto',
-    },
   },
   clinicianImageContainer: {
     width: '100%',
