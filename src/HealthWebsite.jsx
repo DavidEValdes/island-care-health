@@ -517,13 +517,14 @@ const styles = {
     zIndex: '50',
     backgroundColor: '#ffffff',
     borderBottom: '2px solid #e53e3e',
-    padding: '0.5rem 1.5rem',
+    padding: '0.75rem 1.5rem',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    '@media (max-width: 376px)': {
-      flexDirection: 'row',
-      padding: '0.5rem',
+    height: '80px',
+    '@media (max-width: 380px)': {
+      padding: '0.5rem 1rem',
+      height: '60px',
     },
   },
   navLeft: {
@@ -605,12 +606,15 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     background: 'linear-gradient(to bottom right, #f9fafb, #ffffff)',
-    paddingTop: '1.5rem',
+    padding: '0 1.5rem',
     textAlign: 'center',
-    padding: '1.5rem 1.5rem 4rem 1.5rem',
+    paddingTop: '100px',
     '@media (min-width: 768px)': {
-      paddingTop: '5rem',
-      padding: '5rem 1.5rem',
+      padding: '120px 1.5rem 4rem',
+    },
+    '@media (max-width: 380px)': {
+      padding: '90px 1rem 2rem',
+      minHeight: 'calc(100vh - 60px)',
     },
   },
   heroOverlay: {
@@ -633,37 +637,31 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    flex: 1,
     justifyContent: 'center',
-    paddingTop: '0.5rem',
     width: '100%',
+    flex: 1,
     '@media (min-width: 768px)': {
       maxWidth: '768px',
-      paddingTop: 0,
     },
-    '@media (max-width: 376px)': {
-      padding: '0',
+    '@media (max-width: 380px)': {
       maxWidth: '100%',
+      padding: '1rem 0',
     },
   },
   heroTextBubble: {
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    padding: '1.75rem',
+    padding: '2rem',
     borderRadius: '1rem',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-    display: 'inline-block',
     width: '100%',
-    maxWidth: '100%',
+    maxWidth: '600px',
+    margin: '0 auto',
     boxSizing: 'border-box',
-    '@media (min-width: 768px)': {
-      padding: '2rem',
-      width: 'auto',
-    },
-    '@media (max-width: 376px)': {
-      padding: '1rem',
-      margin: '0 1rem',
-      width: 'calc(100% - 2rem)',
-      maxWidth: '340px',
+    '@media (max-width: 380px)': {
+      padding: '1.5rem',
+      maxWidth: '100%',
+      margin: '0',
+      borderRadius: '0.75rem',
     },
   },
   heroTitle: {
