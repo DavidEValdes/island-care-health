@@ -383,7 +383,7 @@ const HealthWebsite = () => {
           <div style={styles.locationHeader}>
             <h2 style={styles.locationTitle}>Visit Us</h2>
             <p style={styles.locationSubtitle}>
-              Located in the heart of Seven Mile Beach
+              Located in Countryside Shopping Village, Savannah
             </p>
           </div>
           <div style={styles.locationContent}>
