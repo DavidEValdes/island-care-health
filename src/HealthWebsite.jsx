@@ -120,33 +120,43 @@ const HealthWebsite = () => {
 
   const services = [
     {
-      title: "Holistic Physiotherapy",
-      description: "Advanced therapeutic techniques combining traditional and modern approaches",
-      icon: "🌿"
+      title: "Musculoskeletal & Neuromuscular Rehabilitation",
+      description: "Specialized rehabilitation using advanced techniques for musculoskeletal conditions and neuromuscular disorders, with personalized treatment plans for optimal recovery.",
+      icon: "🦾"
     },
     {
-      title: "Corrective Massage",
-      description: "Precision-focused therapeutic massage for optimal recovery",
-      icon: "👐"
-    },
-    {
-      title: "Neurological Rehabilitation",
-      description: "Specialized care for neurological recovery and enhancement",
+      title: "Neurac Method Therapy",
+      description: "Advanced treatment focusing on restoring functional and pain-free movement patterns through high-level neuromuscular activation, targeting root causes rather than just symptoms.",
       icon: "🧠"
     },
     {
+      title: "Therapeutic Exercise & Rebounding",
+      description: "Specialized exercise programs incorporating bellicon® rebounding therapy for proprioception, balance, core strength, and lymphatic flow enhancement.",
+      icon: "⚡"
+    },
+    {
+      title: "Holistic Wellness",
+      description: "Comprehensive approach viewing each patient as a whole, combining traditional and modern techniques for complete wellness and recovery.",
+      icon: "🌿"
+    },
+    {
+      title: "Ergonomic Assessment",
+      description: "Expert evaluation of office and home workstations using biomechanical principles, with immediate adjustments for optimal comfort and productivity.",
+      icon: "💺"
+    },
+    {
+      title: "Post-Operative Care",
+      description: "Specialized rehabilitation programs for post-surgical recovery, ensuring optimal healing and return to function.",
+      icon: "🏥"
+    },
+    {
       title: "Home Health Visits",
-      description: "Premium healthcare services delivered to your doorstep",
+      description: "Personalized therapy sessions in the comfort of your home, ideal for limited mobility patients or those preferring home-based care.",
       icon: "🏠"
     },
     {
-      title: "Lymphatic Health",
-      description: "Advanced bellicon® rebounding therapy",
-      icon: "⚖️"
-    },
-    {
       title: "Spinal Health",
-      description: "Innovative redcord® clinic treatments",
+      description: "Comprehensive spinal care including balancing and neuromuscular activation techniques for optimal spinal health and function.",
       icon: "🔄"
     }
   ];
