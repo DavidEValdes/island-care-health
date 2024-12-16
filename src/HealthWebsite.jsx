@@ -4,7 +4,7 @@ import { Phone, Mail, Calendar, ArrowRight, ChevronDown, ArrowLeft } from 'lucid
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
-import logo from './assets/logo.avif';
+import logo from './assets/logo.jpg';
 import lisaCummins from './assets/lisa-cummins.avif';
 import galeZappacosta from './assets/gale-zappacosta.jpg';
 
