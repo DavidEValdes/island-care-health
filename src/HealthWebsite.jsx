@@ -7,6 +7,7 @@ import heroBackground from './assets/hero-background.jpg';
 import logo from './assets/logo.jpg';
 import lisaCummins from './assets/lisa-cummins.avif';
 import galeZappacosta from './assets/gale-zappacosta.jpg';
+import emailjs from '@emailjs/browser';
 
 // Modal component
 const Modal = ({ isOpen, onClose, content }) => {
@@ -31,6 +32,12 @@ const HealthWebsite = () => {
   const [modalContent, setModalContent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [flippedCards, setFlippedCards] = useState([]);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [formStatus, setFormStatus] = useState('');
 
   const openModal = (content) => {
     setModalContent(content);
@@ -160,6 +167,41 @@ const HealthWebsite = () => {
       icon: "🔄"
     }
   ];
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('sending');
+
+    try {
+      await emailjs.send(
+        'service_xxxxxxx', // Replace with your service ID from EmailJS
+        'template_xxxxxx', // Replace with your template ID from EmailJS
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          message: formData.message,
+          to_email: 'info@islandcare.ky'
+        },
+        'tlHVeMU2SSMxIKSjp' // Your public key from the image
+      );
+
+      setFormStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setFormStatus(''), 5000);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setFormStatus('error');
+      setTimeout(() => setFormStatus(''), 5000);
+    }
+  };
 
   return (
     <div style={styles.container}>
@@ -427,50 +469,54 @@ const HealthWebsite = () => {
               We're here to help with any questions you may have
             </p>
           </div>
-          <form style={styles.contactForm}>
+          <form style={styles.contactForm} onSubmit={handleSubmit}>
             <input
               type="text"
+              name="name"
               placeholder="Name"
               style={styles.contactInput}
-              onFocus={(e) => {
-                e.target.style.outline = '2px solid #e53e3e';
-              }}
-              onBlur={(e) => {
-                e.target.style.outline = 'none';
-              }}
+              value={formData.name}
+              onChange={handleInputChange}
+              required
             />
             <input
               type="email"
+              name="email"
               placeholder="Email"
               style={styles.contactInput}
-              onFocus={(e) => {
-                e.target.style.outline = '2px solid #e53e3e';
-              }}
-              onBlur={(e) => {
-                e.target.style.outline = 'none';
-              }}
+              value={formData.email}
+              onChange={handleInputChange}
+              required
             />
             <textarea
+              name="message"
               rows={4}
               placeholder="Message"
               style={styles.contactTextarea}
-              onFocus={(e) => {
-                e.target.style.outline = '2px solid #e53e3e';
-              }}
-              onBlur={(e) => {
-                e.target.style.outline = 'none';
-              }}
+              value={formData.message}
+              onChange={handleInputChange}
+              required
             />
             <Button
+              type="submit"
               style={{
                 ...styles.contactButton,
                 backgroundColor: isContactButtonHovered ? '#c53030' : '#e53e3e',
+                opacity: formStatus === 'sending' ? 0.7 : 1,
+                cursor: formStatus === 'sending' ? 'not-allowed' : 'pointer',
               }}
               onMouseEnter={() => setIsContactButtonHovered(true)}
               onMouseLeave={() => setIsContactButtonHovered(false)}
+              disabled={formStatus === 'sending'}
             >
-              Send Message
+              {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
             </Button>
+            {formStatus === 'success' && (
+              <p style={styles.formStatusSuccess}>Message sent successfully!</p>
+            )}
+            {formStatus === 'error' && (
+              <p style={styles.formStatusError}>Error sending message. Please try again.</p>
+            )}
           </form>
 
           <div style={styles.contactInfo}>
@@ -1509,6 +1555,18 @@ const styles = {
     border: 'none',
     fontSize: '1.25rem',
     cursor: 'pointer',
+  },
+  formStatusSuccess: {
+    color: '#38a169',
+    fontSize: '0.875rem',
+    marginTop: '0.5rem',
+    textAlign: 'center',
+  },
+  formStatusError: {
+    color: '#e53e3e',
+    fontSize: '0.875rem',
+    marginTop: '0.5rem',
+    textAlign: 'center',
   },
 };
 
