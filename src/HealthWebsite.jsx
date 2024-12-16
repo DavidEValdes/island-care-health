@@ -301,7 +301,10 @@ const HealthWebsite = () => {
                       <h4 style={styles.clinicianBackSubtitle}>Specialized Services</h4>
                       <ul style={styles.clinicianBackDetailsList}>
                         {clinician.detailedDescription.map((item, i) => (
-                          <li key={i} style={styles.clinicianBackDetailsItem}>{item}</li>
+                          <li key={i} style={styles.clinicianBackDetailsItem}>
+                            <span style={styles.bulletPoint}>•</span>
+                            {item}
+                          </li>
                         ))}
                       </ul>
                     </div>
@@ -801,10 +804,10 @@ const styles = {
     height: '650px',
     width: '100%',
     '@media (max-width: 768px)': {
-      height: '600px',
+      height: '620px',
     },
     '@media (max-width: 380px)': {
-      height: '570px',
+      height: '580px',
     },
   },
   clinicianCardInner: {
@@ -841,60 +844,99 @@ const styles = {
   },
   clinicianBackContent: {
     width: '90%',
+    height: '100%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '0.75rem',
+    gap: '0.5rem',
+    padding: '1rem 0',
+    boxSizing: 'border-box',
+    '@media (max-width: 380px)': {
+      width: '95%',
+      padding: '0.75rem 0',
+      gap: '0.35rem',
+    },
   },
   clinicianBackHeader: {
     textAlign: 'center',
-    marginBottom: '0.75rem',
+    marginBottom: '0.5rem',
     borderBottom: '2px solid #e53e3e',
     width: '100%',
     paddingBottom: '0.5rem',
+    '@media (max-width: 380px)': {
+      marginBottom: '0.35rem',
+      paddingBottom: '0.25rem',
+    },
   },
   clinicianBackName: {
     fontSize: '1.1rem',
     fontWeight: '600',
     color: '#2D3748',
     marginBottom: '0.25rem',
+    '@media (max-width: 380px)': {
+      fontSize: '1rem',
+      marginBottom: '0.15rem',
+    },
   },
   clinicianBackEducation: {
     fontSize: '0.75rem',
     color: '#718096',
     lineHeight: '1.2',
     textAlign: 'center',
+    '@media (max-width: 380px)': {
+      fontSize: '0.7rem',
+      lineHeight: '1.1',
+      padding: '0 0.5rem',
+    },
   },
   clinicianBackSection: {
     width: '100%',
-    marginBottom: '1rem',
+    marginBottom: '1.5rem',
     textAlign: 'center',
-    padding: '0 1rem',
+    padding: '0 0.5rem',
+    '@media (min-width: 768px)': {
+      marginBottom: '2rem',
+    },
+    '@media (max-width: 380px)': {
+      marginBottom: '0.35rem',
+    },
   },
   clinicianBackSubtitle: {
     fontSize: '0.9rem',
     fontWeight: '600',
     color: '#2D3748',
-    marginBottom: '0.5rem',
+    marginBottom: '0.75rem',
+    '@media (min-width: 768px)': {
+      fontSize: '1rem',
+      marginBottom: '1rem',
+    },
+    '@media (max-width: 380px)': {
+      marginBottom: '0.5rem',
+    },
   },
   clinicianBackList: {
     listStyle: 'none',
-    padding: '0 1rem',
+    padding: '0',
     margin: '0 auto',
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    gap: '0.5rem',
-    maxWidth: '90%',
+    gap: '0.25rem',
+    maxWidth: '95%',
+    '@media (max-width: 380px)': {
+      gap: '0.2rem',
+    },
   },
   clinicianBackDetailsList: {
     listStyle: 'none',
-    padding: '0 1.5rem',
-    margin: '0',
+    padding: '0',
+    margin: '0 auto',
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
     gap: '0.25rem',
+    alignItems: 'center',
+    maxWidth: '90%',
   },
   clinicianBackListItem: {
     fontSize: '0.8rem',
@@ -916,19 +958,26 @@ const styles = {
     fontSize: '0.8rem',
     color: '#4A5568',
     lineHeight: '1.4',
-    textAlign: 'left',
+    textAlign: 'center',
     fontWeight: '400',
-    paddingLeft: '1.5rem',
-    position: 'relative',
-    marginBottom: '0.25rem',
-    '&::before': {
-      content: '"•"',
-      color: '#e53e3e',
-      position: 'absolute',
-      left: '0.5rem',
-      fontSize: '1.2rem',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.35rem',
+    padding: '0.1rem 0',
+    width: '100%',
+    '@media (max-width: 380px)': {
+      fontSize: '0.7rem',
       lineHeight: '1.2',
+      padding: '0.05rem 0',
     },
+  },
+  bulletPoint: {
+    color: '#e53e3e',
+    fontSize: '1rem',
+    lineHeight: '1',
+    flexShrink: 0,
+    marginTop: '1px',
   },
   clinicianBackNote: {
     color: '#A0AEC0',
@@ -936,7 +985,12 @@ const styles = {
     fontStyle: 'italic',
     marginTop: 'auto',
     textAlign: 'center',
-    paddingTop: '0.75rem',
+    paddingTop: '0.35rem',
+    width: '100%',
+    '@media (max-width: 380px)': {
+      fontSize: '0.65rem',
+      paddingTop: '0.25rem',
+    },
   },
   clinicianImageContainer: {
     width: '100%',
