@@ -326,7 +326,6 @@ const HealthWebsite = () => {
                         ))}
                       </ul>
                     </div>
-                    <ArrowLeft style={styles.clinicianBackArrow} />
                   </div>
                 </div>
               </div>
@@ -781,6 +780,12 @@ const styles = {
   cliniciansSection: {
     padding: '3rem 1.5rem',
     backgroundColor: '#f7fafc',
+    '@media (max-width: 380px)': {
+      padding: '2rem 0.5rem',
+    },
+    '@media (max-width: 350px)': {
+      padding: '2rem 0',
+    },
   },
   cliniciansHeader: {
     textAlign: 'center',
@@ -812,6 +817,16 @@ const styles = {
     '@media (max-width: 380px)': {
       gridTemplateColumns: '1fr',
       gap: '1.5rem',
+      padding: '0',
+      width: '100%',
+    },
+    '@media (max-width: 350px)': {
+      width: '100%',
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      padding: '0',
     },
   },
   clinicianCardContainer: {
@@ -824,9 +839,12 @@ const styles = {
     },
     '@media (max-width: 380px)': {
       height: '600px',
+      maxWidth: '100%',
+      margin: '0 auto',
     },
-    '@media (max-width: 375px)': {
-      height: '580px',
+    '@media (max-width: 350px)': {
+      width: '290px',
+      margin: '0 auto',
     },
   },
   clinicianCardInner: {
@@ -879,21 +897,6 @@ const styles = {
     '@media (max-width: 375px)': {
       padding: '0.25rem 0',
       gap: '0.05rem',
-    },
-  },
-  clinicianBackArrow: {
-    position: 'absolute',
-    top: '1rem',
-    left: '0.35rem',
-    color: '#A0AEC0',
-    transform: 'rotate(0deg)',
-    width: '20px',
-    height: '20px',
-    '@media (max-width: 380px)': {
-      top: '0.75rem',
-      left: '0.2rem',
-      width: '16px',
-      height: '16px',
     },
   },
   clinicianBackHeader: {
