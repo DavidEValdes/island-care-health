@@ -90,8 +90,7 @@ const HealthWebsite = () => {
         "Specialized therapeutic exercise using the Neurac Method for pain-free motion",
         "Expert in biomechanics and occupational movement assessment",
         "Customized home visit programs for limited mobility patients",
-        "Workplace ergonomic optimization and consulting",
-        "Healthcare facility setup and improvement consulting"
+        "Workplace ergonomic optimization and consulting"
       ]
     },
     {
@@ -272,7 +271,11 @@ const HealthWebsite = () => {
                 transform: flippedCards.includes(index) ? 'rotateY(180deg)' : 'rotateY(0)',
               }}>
                 {/* Front of card */}
-                <div style={styles.clinicianCardFront}>
+                <div style={{
+                  ...styles.clinicianCardFront,
+                  transform: 'rotateY(0deg)',
+                  backfaceVisibility: 'hidden',
+                }}>
                   <div style={styles.clinicianImageContainer}>
                     <img
                       src={index === 0 ? lisaCummins : galeZappacosta}
@@ -293,7 +296,11 @@ const HealthWebsite = () => {
                   </div>
                 </div>
                 {/* Back of card */}
-                <div style={styles.clinicianCardBack}>
+                <div style={{
+                  ...styles.clinicianCardBack,
+                  transform: 'rotateY(180deg)',
+                  backfaceVisibility: 'hidden',
+                }}>
                   <div style={styles.clinicianBackContent}>
                     <div style={styles.clinicianBackHeader}>
                       <h3 style={styles.clinicianBackName}>{clinician.name}</h3>
@@ -815,6 +822,9 @@ const styles = {
       height: '620px',
     },
     '@media (max-width: 380px)': {
+      height: '600px',
+    },
+    '@media (max-width: 375px)': {
       height: '580px',
     },
   },
@@ -861,8 +871,12 @@ const styles = {
     boxSizing: 'border-box',
     '@media (max-width: 380px)': {
       width: '95%',
-      padding: '0.75rem 0',
-      gap: '0.35rem',
+      padding: '0.35rem 0',
+      gap: '0.1rem',
+    },
+    '@media (max-width: 375px)': {
+      padding: '0.25rem 0',
+      gap: '0.05rem',
     },
   },
   clinicianBackHeader: {
@@ -872,8 +886,8 @@ const styles = {
     width: '100%',
     paddingBottom: '0.5rem',
     '@media (max-width: 380px)': {
-      marginBottom: '0.35rem',
-      paddingBottom: '0.25rem',
+      marginBottom: '0.25rem',
+      paddingBottom: '0.15rem',
     },
   },
   clinicianBackName: {
@@ -882,8 +896,8 @@ const styles = {
     color: '#2D3748',
     marginBottom: '0.25rem',
     '@media (max-width: 380px)': {
-      fontSize: '1rem',
-      marginBottom: '0.15rem',
+      fontSize: '0.9rem',
+      marginBottom: '0.1rem',
     },
   },
   clinicianBackEducation: {
@@ -892,9 +906,9 @@ const styles = {
     lineHeight: '1.2',
     textAlign: 'center',
     '@media (max-width: 380px)': {
-      fontSize: '0.7rem',
-      lineHeight: '1.1',
-      padding: '0 0.5rem',
+      fontSize: '0.6rem',
+      lineHeight: '1',
+      padding: '0 0.25rem',
     },
   },
   clinicianBackSection: {
@@ -906,7 +920,13 @@ const styles = {
       marginBottom: '2rem',
     },
     '@media (max-width: 380px)': {
-      marginBottom: '0.35rem',
+      marginBottom: '0.15rem',
+      fontSize: '0.75rem',
+      padding: '0 0.15rem',
+    },
+    '@media (max-width: 375px)': {
+      marginBottom: '0.1rem',
+      padding: '0 0.1rem',
     },
   },
   clinicianBackSubtitle: {
@@ -919,7 +939,8 @@ const styles = {
       marginBottom: '1rem',
     },
     '@media (max-width: 380px)': {
-      marginBottom: '0.5rem',
+      fontSize: '0.75rem',
+      marginBottom: '0.15rem',
     },
   },
   clinicianBackList: {
@@ -932,7 +953,10 @@ const styles = {
     gap: '0.25rem',
     maxWidth: '95%',
     '@media (max-width: 380px)': {
-      gap: '0.2rem',
+      gap: '0.1rem',
+    },
+    '@media (max-width: 375px)': {
+      gap: '0.05rem',
     },
   },
   clinicianBackDetailsList: {
@@ -957,9 +981,14 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: '0.5rem',
-    '&::before': {
-      content: '"•"',
-      color: '#e53e3e',
+    '@media (max-width: 380px)': {
+      fontSize: '0.6rem',
+      lineHeight: '1',
+      gap: '0.1rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.55rem',
+      gap: '0.05rem',
     },
   },
   clinicianBackDetailsItem: {
@@ -975,9 +1004,15 @@ const styles = {
     padding: '0.1rem 0',
     width: '100%',
     '@media (max-width: 380px)': {
-      fontSize: '0.7rem',
-      lineHeight: '1.2',
+      fontSize: '0.6rem',
+      lineHeight: '1',
       padding: '0.05rem 0',
+      gap: '0.1rem',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '0.55rem',
+      padding: '0.025rem 0',
+      gap: '0.05rem',
     },
   },
   bulletPoint: {
@@ -991,13 +1026,14 @@ const styles = {
     color: '#A0AEC0',
     fontSize: '0.7rem',
     fontStyle: 'italic',
-    marginTop: 'auto',
     textAlign: 'center',
-    paddingTop: '0.35rem',
+    padding: '0.35rem 0',
+    marginTop: 'auto',
     width: '100%',
     '@media (max-width: 380px)': {
-      fontSize: '0.65rem',
-      paddingTop: '0.25rem',
+      fontSize: '0.6rem',
+      padding: '0.15rem 0',
+      marginTop: 'auto',
     },
   },
   clinicianImageContainer: {
