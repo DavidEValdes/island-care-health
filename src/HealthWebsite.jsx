@@ -778,14 +778,8 @@ const styles = {
     whiteSpace: 'nowrap',
   },
   cliniciansSection: {
-    padding: '3rem 1.5rem',
+    padding: '2rem 1rem',
     backgroundColor: '#f7fafc',
-    '@media (max-width: 380px)': {
-      padding: '2rem 0.5rem',
-    },
-    '@media (max-width: 350px)': {
-      padding: '2rem 0',
-    },
   },
   cliniciansHeader: {
     textAlign: 'center',
@@ -813,19 +807,13 @@ const styles = {
     gap: '2rem',
     maxWidth: '1200px',
     margin: '0 auto',
-    padding: '0 1rem',
     '@media (max-width: 380px)': {
-      gridTemplateColumns: '1fr',
-      gap: '1.5rem',
-      padding: '0',
-      width: '100%',
-    },
-    '@media (max-width: 350px)': {
-      width: '100%',
-      margin: '0 auto',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      gap: '1.5rem',
+      maxWidth: '250px',
+      margin: '0 auto',
       padding: '0',
     },
   },
@@ -839,12 +827,7 @@ const styles = {
     },
     '@media (max-width: 380px)': {
       height: '600px',
-      maxWidth: '100%',
-      margin: '0 auto',
-    },
-    '@media (max-width: 350px)': {
-      width: '290px',
-      margin: '0 auto',
+      width: '250px',
     },
   },
   clinicianCardInner: {
