@@ -9,6 +9,21 @@ import lisaCummins from './assets/lisa-cummins.avif';
 import galeZappacosta from './assets/gale-zappacosta.jpg';
 import emailjs from '@emailjs/browser';
 
+const styleSheet = document.createElement('style');
+styleSheet.textContent = `
+  @media (max-width: 330px) {
+    .nav-book-button {
+      font-size: 0.7rem !important;
+      padding: 0.25rem 0.5rem !important;
+    }
+    .nav-book-button svg {
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }
+`;
+document.head.appendChild(styleSheet);
+
 // Modal component
 const Modal = ({ isOpen, onClose, content }) => {
   if (!isOpen) return null;
@@ -213,6 +228,7 @@ const HealthWebsite = () => {
         <div style={styles.navRight}>
           <a href="https://wa.me/13459256677" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
             <Button
+              className="nav-book-button"
               style={{
                 ...styles.navButton,
               }}
@@ -644,6 +660,10 @@ const styles = {
     '@media (max-width: 376px)': {
       fontSize: '0.85rem',
       padding: '0.4rem 0.9rem',
+    },
+    '@media (max-width: 330px)': {
+      fontSize: '0.75rem',
+      padding: '0.35rem 0.7rem',
     },
   },
   heroButtonIcon: {
