@@ -811,10 +811,16 @@ const styles = {
   },
   cliniciansHeader: {
     textAlign: 'center',
-    marginBottom: '5rem',
+    marginBottom: '2.5rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1rem',
+    '@media (max-width: 768px)': {
+      marginBottom: '2rem',
+    },
+    '@media (max-width: 380px)': {
+      marginBottom: '1.5rem',
+    },
   },
   cliniciansTitle: {
     fontSize: '2.5rem',
