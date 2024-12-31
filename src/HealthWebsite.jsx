@@ -104,7 +104,9 @@ const HealthWebsite = () => {
     },
     {
       title: "Therapeutic Exercise & Rebounding",
-      description: "Specialized exercise programs incorporating bellicon® rebounding therapy for proprioception, balance, core strength, and lymphatic flow enhancement.",
+      description: "Specialized exercise programs incorporating ",
+      descriptionHighlight: "bellicon®",
+      descriptionEnd: " rebounding therapy for proprioception, balance, core strength, and lymphatic flow enhancement.",
       icon: "⚡"
     },
     {
@@ -370,7 +372,13 @@ const HealthWebsite = () => {
             >
               <div style={styles.serviceIcon}>{service.icon}</div>
               <h3 style={styles.serviceTitle}>{service.title}</h3>
-              <p style={styles.serviceDescription}>{service.description}</p>
+              <p style={styles.serviceDescription}>
+                {service.description}
+                {service.descriptionHighlight && (
+                  <span style={{ color: '#c53030', fontWeight: '700' }}>{service.descriptionHighlight}</span>
+                )}
+                {service.descriptionEnd || service.description}
+              </p>
             </Card>
           ))}
         </div>
