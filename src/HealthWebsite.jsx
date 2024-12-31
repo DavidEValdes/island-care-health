@@ -6,7 +6,6 @@ import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
 import logo from './assets/logo.jpg';
 import lisaCummins from './assets/lisa-cummins.avif';
-import galeZappacosta from './assets/gale-zappacosta.jpg';
 import emailjs from '@emailjs/browser';
 
 const styleSheet = document.createElement('style');
@@ -114,28 +113,6 @@ const HealthWebsite = () => {
         "Customized home visit programs for limited mobility patients",
         "Workplace ergonomic optimization and consulting",
         "Healthcare facility setup and improvement consulting"
-      ]
-    },
-    {
-      name: "Dr. Gale Zappacosta",
-      title: "Chiropractor",
-      shortDescription: "Expert in comprehensive chiropractic care focusing on neuro-musculo-skeletal system disorders.",
-      focus: "Holistic healing & pain management",
-      credentials: "DC",
-      education: "Doctor of Chiropractic",
-      expertise: [
-        "Chiropractic Adjustments & Manipulations",
-        "Neuro-musculo-skeletal Treatment",
-        "Myofascial & Soft Tissue Therapy",
-        "Nutritional & Lifestyle Guidance",
-        "Integrated Therapeutic Approaches"
-      ],
-      detailedDescription: [
-        "Management of environmental, physical, and neurological disorders",
-        "Advanced soft tissue and neuro-stabilization techniques",
-        "Comprehensive treatment including heat/ice, taping, and bracing",
-        "Dietary and nutritional supplementation guidance",
-        "Physiological therapeutics (ultrasound, micro-current, laser)"
       ]
     }
   ];
@@ -305,12 +282,18 @@ const HealthWebsite = () => {
       {/* Clinicians Section */}
       <section id="clinicians-section" style={styles.cliniciansSection}>
         <div style={styles.cliniciansHeader}>
-          <h2 style={styles.cliniciansTitle}>Our Expert Clinicians</h2>
+          <h2 style={styles.cliniciansTitle}>Our Expert Clinician</h2>
           <p style={styles.cliniciansSubtitle}>
-            Dedicated professionals committed to your recovery and well-being
+            Dedicated professional committed to your recovery and well-being
           </p>
         </div>
-        <div style={styles.cliniciansGrid}>
+        <div style={{
+          ...styles.cliniciansGrid,
+          display: 'flex',
+          justifyContent: 'center',
+          maxWidth: '600px',
+          margin: '0 auto'
+        }}>
           {clinicians.map((clinician, index) => (
             <div 
               key={index} 
@@ -337,7 +320,7 @@ const HealthWebsite = () => {
                 }}>
                   <div style={styles.clinicianImageContainer}>
                     <img
-                      src={index === 0 ? lisaCummins : galeZappacosta}
+                      src={lisaCummins}
                       alt={clinician.name}
                       style={styles.clinicianImage}
                     />
@@ -888,13 +871,16 @@ const styles = {
     cursor: 'pointer',
     height: '650px',
     width: '100%',
+    maxWidth: '400px',
+    margin: '0 auto',
     '@media (max-width: 768px)': {
       height: '620px',
+      maxWidth: '350px'
     },
     '@media (max-width: 380px)': {
       height: '600px',
-      width: '250px',
-    },
+      maxWidth: '300px'
+    }
   },
   clinicianCardInner: {
     position: 'relative',
