@@ -324,7 +324,7 @@ const HealthWebsite = () => {
                       <h3 style={styles.clinicianBackName}>{clinician.name}</h3>
                       <p style={styles.clinicianBackEducation}>{clinician.education}</p>
                     </div>
-                    <div style={styles.clinicianBackSection}>
+                    <div style={{...styles.clinicianBackSection, marginTop: '0.9rem'}}>
                       <h4 style={styles.clinicianBackSubtitle}>Areas of Expertise</h4>
                       <ul style={styles.clinicianBackList}>
                         {clinician.expertise.map((item, i) => (
@@ -942,12 +942,12 @@ const styles = {
       marginBottom: '2rem',
     },
     '@media (max-width: 380px)': {
-      marginBottom: '0.15rem',
+      marginBottom: '1rem',
       fontSize: '0.75rem',
       padding: '0 0.15rem',
     },
     '@media (max-width: 375px)': {
-      marginBottom: '0.1rem',
+      marginBottom: '0.75rem',
       padding: '0 0.1rem',
     },
   },
@@ -955,14 +955,17 @@ const styles = {
     fontSize: '0.9rem',
     fontWeight: '600',
     color: '#2D3748',
-    marginBottom: '0.75rem',
+    marginBottom: '1rem',
+    marginTop: '1.5rem',
     '@media (min-width: 768px)': {
       fontSize: '1rem',
-      marginBottom: '1rem',
+      marginBottom: '1.25rem',
+      marginTop: '2rem',
     },
     '@media (max-width: 380px)': {
       fontSize: '0.75rem',
-      marginBottom: '0.15rem',
+      marginBottom: '0.75rem',
+      marginTop: '1rem',
     },
   },
   clinicianBackList: {
