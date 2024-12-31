@@ -454,6 +454,17 @@ const HealthWebsite = () => {
               <p style={styles.locationAddressText}>Countryside Shopping Village</p>
               <p style={styles.locationAddressText}>33 Hirst Rd, Savannah KY1-1506</p>
               <p style={styles.locationAddressText}>Cayman Islands</p>
+              <p style={{
+                ...styles.locationAddressText,
+                marginTop: '1rem',
+                color: '#1a202c',
+                fontWeight: '700'
+              }}>Open 7:00 AM - 7:00 PM</p>
+              <p style={{
+                ...styles.locationAddressText,
+                color: '#1a202c',
+                fontWeight: '700'
+              }}>7 Days a Week</p>
             </div>
           </div>
         </div>
