@@ -438,7 +438,7 @@ const HealthWebsite = () => {
             <div style={styles.locationMapContainer}>
               <div style={styles.locationMap}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.1234567890123!2d-81.38666655!3d19.3429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f258910b7367a83%3A0x4347d823929f0544!2sIsland+Care+Health!5e0!3m2!1sen!2sus!4v1701893547372!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.8076456647847!2d-81.30025702570371!3d19.273422186979843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f2589f5860751c7%3A0x2d3158e79d240ec8!2sIsland%20Care%20Health%2C%20Boutique%20Physiotherapy%20and%20Chiropractic%20Care!5e0!3m2!1sen!2s!4v1704169744635!5m2!1sen!2s"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
