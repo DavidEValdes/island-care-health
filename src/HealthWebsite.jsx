@@ -1,6 +1,6 @@
 // src/HealthWebsite.js
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, Calendar, ArrowRight, ChevronDown, ArrowLeft } from 'lucide-react';
+import { Phone, Mail, Calendar, ArrowRight, ChevronDown } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
@@ -23,28 +23,12 @@ styleSheet.textContent = `
 `;
 document.head.appendChild(styleSheet);
 
-// Modal component
-const Modal = ({ isOpen, onClose, content }) => {
-  if (!isOpen) return null;
-  return (
-    <div style={styles.modalOverlay} onClick={onClose}>
-      <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <button style={styles.modalCloseButton} onClick={onClose}>Close</button>
-        {content}
-      </div>
-    </div>
-  );
-};
-
 const HealthWebsite = () => {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const [hoveredNavLink, setHoveredNavLink] = useState(null);
   const [hoveredService, setHoveredService] = useState(null);
-  const [hoveredLearnMore, setHoveredLearnMore] = useState(null);
   const [hoveredContactLink, setHoveredContactLink] = useState(null);
   const [isContactButtonHovered, setIsContactButtonHovered] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [flippedCards, setFlippedCards] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -52,16 +36,6 @@ const HealthWebsite = () => {
     message: ''
   });
   const [formStatus, setFormStatus] = useState('');
-
-  const openModal = (content) => {
-    setModalContent(content);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalContent(null);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -393,33 +367,10 @@ const HealthWebsite = () => {
               }}
               onMouseEnter={() => setHoveredService(index)}
               onMouseLeave={() => setHoveredService(null)}
-              onClick={() => openModal(
-                <div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <p>Additional details about {service.title}...</p>
-                </div>
-              )}
             >
               <div style={styles.serviceIcon}>{service.icon}</div>
               <h3 style={styles.serviceTitle}>{service.title}</h3>
               <p style={styles.serviceDescription}>{service.description}</p>
-              <div
-                style={{
-                  ...styles.serviceLearnMore,
-                  ...(hoveredLearnMore === index ? styles.serviceLearnMoreHover : {}),
-                }}
-                onMouseEnter={() => setHoveredLearnMore(index)}
-                onMouseLeave={() => setHoveredLearnMore(null)}
-              >
-                <span>Learn more</span>
-                <ArrowRight
-                  style={{
-                    ...styles.serviceArrow,
-                    ...(hoveredLearnMore === index ? styles.serviceArrowHover : {}),
-                  }}
-                />
-              </div>
             </Card>
           ))}
         </div>
@@ -559,9 +510,6 @@ const HealthWebsite = () => {
           </div>
         </div>
       </section>
-
-      {/* Modal for service details */}
-      <Modal isOpen={isModalOpen} onClose={closeModal} content={modalContent} />
     </div>
   );
 };
