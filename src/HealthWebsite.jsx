@@ -70,19 +70,21 @@ const HealthWebsite = () => {
     {
       name: "Lisa Cummins",
       title: "Physiotherapist",
-      shortDescription: "Specialized in musculoskeletal rehabilitation and therapeutic exercise using the innovative Neurac Method.",
+      shortDescription: "Specialized in musculoskeletal rehabilitation and therapeutic exercise using the innovative ",
+      shortDescriptionHighlight: "Neurac Method™",
+      shortDescriptionEnd: ".",
       focus: "Pain-free movement & functional recovery",
       credentials: "PT, HE",
       education: "Double degree in Physical Therapy and Health Education - Florida International University (1999)",
       expertise: [
         "Musculoskeletal & Neurological Rehabilitation",
-        "Neurac Method Therapy",
+        "Neurac Method™ Therapy",
         "Ergonomic Assessment & Workplace Design",
         "Home Visit Physiotherapy",
         "Healthcare Management & Consulting"
       ],
       detailedDescription: [
-        "Specialized therapeutic exercise using the Neurac Method for pain-free motion",
+        "Specialized therapeutic exercise using the Neurac Method™ for pain-free motion",
         "Expert in biomechanics and occupational movement assessment",
         "Customized home visit programs for limited mobility patients",
         "Workplace ergonomic optimization and consulting",
@@ -98,8 +100,10 @@ const HealthWebsite = () => {
       icon: "🦾"
     },
     {
-      title: "Neurac Method Therapy",
-      description: "Advanced treatment focusing on restoring functional and pain-free movement patterns through high-level neuromuscular activation, targeting root causes rather than just symptoms.",
+      title: "Neurac Method™ Therapy",
+      description: "Advanced treatment focusing on restoring functional and pain-free movement patterns through high-level neuromuscular ",
+      descriptionHighlight: "Neurac Method™",
+      descriptionEnd: " activation, targeting root causes rather than just symptoms.",
       icon: "🧠"
     },
     {
@@ -306,7 +310,13 @@ const HealthWebsite = () => {
                     <p style={styles.clinicianCredentials}>{clinician.credentials}</p>
                     <h4 style={styles.clinicianTitle}>{clinician.title}</h4>
                     <p style={styles.clinicianFocus}>{clinician.focus}</p>
-                    <p style={styles.clinicianDescription}>{clinician.shortDescription}</p>
+                    <p style={styles.clinicianDescription}>
+                      {clinician.shortDescription}
+                      {clinician.shortDescriptionHighlight && (
+                        <span style={{ color: '#c53030', fontWeight: '700' }}>{clinician.shortDescriptionHighlight}</span>
+                      )}
+                      {clinician.shortDescriptionEnd}
+                    </p>
                     <div style={styles.clinicianLearnMore}>
                       <span>Click to see full profile</span>
                       <ArrowRight size={16} />
