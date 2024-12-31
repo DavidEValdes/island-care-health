@@ -375,9 +375,11 @@ const HealthWebsite = () => {
               <p style={styles.serviceDescription}>
                 {service.description}
                 {service.descriptionHighlight && (
-                  <span style={{ color: '#c53030', fontWeight: '700' }}>{service.descriptionHighlight}</span>
+                  <>
+                    <span style={{ color: '#c53030', fontWeight: '700' }}>{service.descriptionHighlight}</span>
+                    {service.descriptionEnd}
+                  </>
                 )}
-                {service.descriptionEnd || service.description}
               </p>
             </Card>
           ))}
