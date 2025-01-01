@@ -166,15 +166,15 @@ const HealthWebsite = () => {
 
     try {
       await emailjs.send(
-        'service_xxxxxxx', // Replace with your service ID from EmailJS
-        'template_xxxxxx', // Replace with your template ID from EmailJS
+        'Contact Form Email',
+        'template_wyfr0ic',
         {
           from_name: formData.name,
           reply_to: formData.email,
           message: formData.message,
           to_email: 'info@islandcare.ky'
         },
-        'tlHVeMU2SSMxIKSjp' // Your public key from the image
+        'tIHVeMU2SSMxIKSjp'
       );
 
       setFormStatus('success');
