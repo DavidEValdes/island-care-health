@@ -56,14 +56,31 @@ const HealthWebsite = () => {
   const scrollToTeam = () => {
     const cliniciansSection = document.querySelector('#clinicians-section');
     if (cliniciansSection) {
-      const offset = 50; // Reduced from 100 to 50 pixels
+      const offset = 100;
       const elementPosition = cliniciansSection.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      const startPosition = window.pageYOffset;
+      const distance = offsetPosition - startPosition;
+      const duration = 1200; // Reduced from 2000ms to 1200ms for faster scroll
+      let start = null;
+
+      function animation(currentTime) {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const progress = Math.min(timeElapsed / duration, 1);
+
+        // Easing function for smoother animation
+        const ease = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        
+        window.scrollTo(0, startPosition + distance * ease(progress));
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      }
+
+      requestAnimationFrame(animation);
     }
   };
 
