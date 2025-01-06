@@ -71,7 +71,7 @@ const HealthWebsite = () => {
     {
       name: "Lisa Cummins",
       title: "Physiotherapist",
-      shortDescription: "Specialized in musculoskeletal rehabilitation and therapeutic exercise using the innovative Neurac Method™.",
+      shortDescription: "Specialized in musculoskeletal rehabilitation and advanced therapeutic exercise techniques for optimal recovery.",
       focus: "Pain-free movement & functional recovery",
       credentials: "PT, HE",
       education: "Double degree in Physical Therapy and Health Education - Florida International University (1999)",
@@ -103,11 +103,11 @@ const HealthWebsite = () => {
         "Cardiorespiratory Rehabilitation",
         "Pediatric and Geriatric Physiotherapy",
         "Home Visit Physiotherapy",
-        "Neurac Method Therapy"
+        "Neurac Method™ Therapy"
       ],
       detailedDescription: [
         "Manual Therapy including IASTM, Cupping, and Trigger point dry needling",
-        "Therapeutic exercises and Neurac Method for pain-free motion",
+        "Therapeutic exercises and Neurac Method™ for pain-free motion",
         "Cardiorespiratory care and rehabilitation",
         "Sports Injury management and Rehabilitation",
         "Post-Surgical Physiotherapy Management",
