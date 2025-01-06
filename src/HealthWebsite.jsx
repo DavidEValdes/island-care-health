@@ -1,11 +1,12 @@
 // src/HealthWebsite.js
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, Calendar, ArrowRight, ChevronDown } from 'lucide-react';
+import { Phone, Mail, Calendar, ArrowRight, ChevronDown, ArrowLeft } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
 import logo from './assets/logo.jpg';
 import lisaCummins from './assets/lisa-cummins.avif';
+import visaniImage from './assets/image.png';
 import emailjs from '@emailjs/browser';
 
 const styleSheet = document.createElement('style');
@@ -55,26 +56,14 @@ const HealthWebsite = () => {
   const scrollToTeam = () => {
     const cliniciansSection = document.querySelector('#clinicians-section');
     if (cliniciansSection) {
-      const offset = 50;
+      const offset = 50; // Reduced from 100 to 50 pixels
       const elementPosition = cliniciansSection.getBoundingClientRect().top;
-      const startPosition = window.pageYOffset;
-      const targetPosition = elementPosition + startPosition - offset;
-      const duration = 1500; // 1.5 seconds
-      let start = null;
-
-      const animation = currentTime => {
-        if (!start) start = currentTime;
-        const progress = currentTime - start;
-        const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-        const run = easeInOutCubic(Math.min(progress / duration, 1));
-        const currentPosition = startPosition + (targetPosition - startPosition) * run;
-        window.scrollTo(0, currentPosition);
-        if (progress < duration) {
-          window.requestAnimationFrame(animation);
-        }
-      };
-
-      window.requestAnimationFrame(animation);
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -82,9 +71,7 @@ const HealthWebsite = () => {
     {
       name: "Lisa Cummins",
       title: "Physiotherapist",
-      shortDescription: "Specialized in musculoskeletal rehabilitation and therapeutic exercise using the innovative ",
-      shortDescriptionHighlight: "Neurac Method™",
-      shortDescriptionEnd: ".",
+      shortDescription: "Specialized in musculoskeletal rehabilitation and therapeutic exercise using the innovative Neurac Method™.",
       focus: "Pain-free movement & functional recovery",
       credentials: "PT, HE",
       education: "Double degree in Physical Therapy and Health Education - Florida International University (1999)",
@@ -101,6 +88,31 @@ const HealthWebsite = () => {
         "Customized home visit programs for limited mobility patients",
         "Workplace ergonomic optimization and consulting",
         "Healthcare facility setup and improvement consulting"
+      ]
+    },
+    {
+      name: "Visani Wijesiriwardana",
+      title: "Physiotherapist",
+      shortDescription: "Expert in comprehensive physiotherapy with specialized focus on musculoskeletal rehabilitation and sports therapy.",
+      focus: "Comprehensive rehabilitation & sports therapy",
+      credentials: "BSc(Hons), Dip. Exercise & Sports Sciences, HCPC, CPAM, SLMC",
+      education: "BSc(Hons) in Physiotherapy, Diploma in Exercise & Sports Sciences",
+      expertise: [
+        "Musculoskeletal & Neurological Rehabilitation",
+        "Sports Physiotherapy",
+        "Cardiorespiratory Rehabilitation",
+        "Pediatric and Geriatric Physiotherapy",
+        "Home Visit Physiotherapy",
+        "Neurac Method Therapy"
+      ],
+      detailedDescription: [
+        "Manual Therapy including IASTM, Cupping, and Trigger point dry needling",
+        "Therapeutic exercises and Neurac Method for pain-free motion",
+        "Cardiorespiratory care and rehabilitation",
+        "Sports Injury management and Rehabilitation",
+        "Post-Surgical Physiotherapy Management",
+        "Exercise and Wellness Programs",
+        "Ergonomic Assessment & Workplace Design"
       ]
     }
   ];
@@ -274,18 +286,12 @@ const HealthWebsite = () => {
       {/* Clinicians Section */}
       <section id="clinicians-section" style={styles.cliniciansSection}>
         <div style={styles.cliniciansHeader}>
-          <h2 style={styles.cliniciansTitle}>Our Expert Clinician</h2>
+          <h2 style={styles.cliniciansTitle}>Our Expert Clinicians</h2>
           <p style={styles.cliniciansSubtitle}>
-            Dedicated professional committed to your recovery and well-being
+            Dedicated professionals committed to your recovery and well-being
           </p>
         </div>
-        <div style={{
-          ...styles.cliniciansGrid,
-          display: 'flex',
-          justifyContent: 'center',
-          maxWidth: '600px',
-          margin: '0 auto'
-        }}>
+        <div style={styles.cliniciansGrid}>
           {clinicians.map((clinician, index) => (
             <div 
               key={index} 
@@ -312,7 +318,7 @@ const HealthWebsite = () => {
                 }}>
                   <div style={styles.clinicianImageContainer}>
                     <img
-                      src={lisaCummins}
+                      src={index === 0 ? lisaCummins : visaniImage}
                       alt={clinician.name}
                       style={styles.clinicianImage}
                     />
@@ -322,13 +328,7 @@ const HealthWebsite = () => {
                     <p style={styles.clinicianCredentials}>{clinician.credentials}</p>
                     <h4 style={styles.clinicianTitle}>{clinician.title}</h4>
                     <p style={styles.clinicianFocus}>{clinician.focus}</p>
-                    <p style={styles.clinicianDescription}>
-                      {clinician.shortDescription}
-                      {clinician.shortDescriptionHighlight && (
-                        <span style={{ color: '#c53030', fontWeight: '700' }}>{clinician.shortDescriptionHighlight}</span>
-                      )}
-                      {clinician.shortDescriptionEnd}
-                    </p>
+                    <p style={styles.clinicianDescription}>{clinician.shortDescription}</p>
                     <div style={styles.clinicianLearnMore}>
                       <span>Click to see full profile</span>
                       <ArrowRight size={16} />
@@ -346,7 +346,7 @@ const HealthWebsite = () => {
                       <h3 style={styles.clinicianBackName}>{clinician.name}</h3>
                       <p style={styles.clinicianBackEducation}>{clinician.education}</p>
                     </div>
-                    <div style={{...styles.clinicianBackSection, marginTop: '0.9rem'}}>
+                    <div style={styles.clinicianBackSection}>
                       <h4 style={styles.clinicianBackSubtitle}>Areas of Expertise</h4>
                       <ul style={styles.clinicianBackList}>
                         {clinician.expertise.map((item, i) => (
@@ -868,16 +868,13 @@ const styles = {
     cursor: 'pointer',
     height: '650px',
     width: '100%',
-    maxWidth: '400px',
-    margin: '0 auto',
     '@media (max-width: 768px)': {
       height: '620px',
-      maxWidth: '350px'
     },
     '@media (max-width: 380px)': {
       height: '600px',
-      maxWidth: '300px'
-    }
+      width: '250px',
+    },
   },
   clinicianCardInner: {
     position: 'relative',
@@ -972,12 +969,12 @@ const styles = {
       marginBottom: '2rem',
     },
     '@media (max-width: 380px)': {
-      marginBottom: '1rem',
+      marginBottom: '0.15rem',
       fontSize: '0.75rem',
       padding: '0 0.15rem',
     },
     '@media (max-width: 375px)': {
-      marginBottom: '0.75rem',
+      marginBottom: '0.1rem',
       padding: '0 0.1rem',
     },
   },
@@ -985,17 +982,14 @@ const styles = {
     fontSize: '0.9rem',
     fontWeight: '600',
     color: '#2D3748',
-    marginBottom: '1rem',
-    marginTop: '1.5rem',
+    marginBottom: '0.75rem',
     '@media (min-width: 768px)': {
       fontSize: '1rem',
-      marginBottom: '1.25rem',
-      marginTop: '2rem',
+      marginBottom: '1rem',
     },
     '@media (max-width: 380px)': {
       fontSize: '0.75rem',
-      marginBottom: '0.75rem',
-      marginTop: '1rem',
+      marginBottom: '0.15rem',
     },
   },
   clinicianBackList: {
@@ -1079,11 +1073,17 @@ const styles = {
   },
   clinicianImageContainer: {
     width: '100%',
-    height: '45%',
+    height: '350px',
     overflow: 'hidden',
     position: 'relative',
     borderTopLeftRadius: '2rem',
     borderTopRightRadius: '2rem',
+    '@media (max-width: 768px)': {
+      height: '300px',
+    },
+    '@media (max-width: 380px)': {
+      height: '220px',
+    },
   },
   clinicianImage: {
     width: '100%',
@@ -1098,9 +1098,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    textAlign: 'center',
     flex: 1,
-    gap: '0.75rem',
+    justifyContent: 'space-between',
   },
   clinicianName: {
     fontSize: '1.5rem',
@@ -1158,9 +1158,16 @@ const styles = {
     transition: 'all 0.2s ease',
     fontWeight: '400',
     width: '100%',
-    padding: '0.75rem 0 0',
+    padding: '0.5rem 0',
     marginTop: 'auto',
-    textAlign: 'center',
+    backgroundColor: '#ffffff',
+    position: 'relative',
+    zIndex: '10',
+    letterSpacing: '0.02em',
+    '&:hover': {
+      color: '#e53e3e',
+      gap: '0.5rem',
+    },
   },
   servicesSection: {
     padding: '2rem 1rem',
@@ -1226,11 +1233,6 @@ const styles = {
     transform: 'translateY(-5px)',
     borderColor: '#e53e3e',
     height: 'auto',
-  },
-  serviceCardExpanded: {
-    transform: 'scale(1.1)',
-    transition: 'transform 0.5s ease',
-    zIndex: 1,
   },
   serviceIcon: {
     fontSize: '1.75rem',
