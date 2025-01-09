@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://islandcare.ky/sitemap.xml
+Sitemap: https://www.islandcare.ky/sitemap.xml
