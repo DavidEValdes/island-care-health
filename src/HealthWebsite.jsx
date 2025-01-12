@@ -473,17 +473,10 @@ const HealthWebsite = () => {
               <p style={styles.locationAddressText}>Countryside Shopping Village</p>
               <p style={styles.locationAddressText}>33 Hirst Rd, Savannah KY1-1506</p>
               <p style={styles.locationAddressText}>Cayman Islands</p>
-              <p style={{
-                ...styles.locationAddressText,
-                marginTop: '1rem',
-                color: '#1a202c',
-                fontWeight: '700'
-              }}>Open 7:00 AM - 7:00 PM</p>
-              <p style={{
-                ...styles.locationAddressText,
-                color: '#1a202c',
-                fontWeight: '700'
-              }}>7 Days a Week</p>
+              <div style={styles.openingHoursBox}>
+                <p style={styles.openingHoursText}>Open 7:00 AM - 7:00 PM</p>
+                <p style={styles.openingHoursText}>7 Days a Week</p>
+              </div>
             </div>
           </div>
         </div>
@@ -1680,6 +1673,21 @@ const styles = {
     '@media (max-width: 380px)': {
       fontSize: '0.8rem',
     },
+  },
+  openingHoursBox: {
+    backgroundColor: '#ffffff',
+    padding: '1rem 1.5rem',
+    borderRadius: '0.75rem',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+    marginTop: '1rem',
+    border: '1px solid #e2e8f0',
+  },
+  openingHoursText: {
+    color: '#1a202c',
+    fontSize: '1.1rem',
+    fontWeight: '700',
+    lineHeight: '1.6',
+    textAlign: 'center',
   },
 };
 
