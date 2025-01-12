@@ -288,6 +288,7 @@ const HealthWebsite = () => {
               <div style={styles.appointmentInfo}>
                 <span style={styles.heroHomeVisit}>🏠 Home visits available across Grand Cayman</span>
                 <div style={styles.socialLinks}>
+                  <span style={styles.socialText}>Follow us:</span>
                   <a 
                     href="https://www.instagram.com/islandcarehealthphysio/" 
                     target="_blank" 
@@ -1636,6 +1637,16 @@ const styles = {
     gap: '1rem',
     marginTop: '0.75rem',
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  socialText: {
+    fontSize: '0.85rem',
+    color: '#4A5568',
+    fontWeight: '400',
+    letterSpacing: '0.02em',
+    '@media (max-width: 380px)': {
+      fontSize: '0.75rem',
+    },
   },
   socialLink: {
     color: '#4A5568',
@@ -1654,3 +1665,4 @@ const styles = {
 };
 
 export default HealthWebsite;
+
