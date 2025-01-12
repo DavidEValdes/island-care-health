@@ -1,6 +1,6 @@
 // src/HealthWebsite.js
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, Calendar, ArrowRight, ChevronDown, ArrowLeft } from 'lucide-react';
+import { Phone, Mail, Calendar, ArrowRight, ChevronDown, ArrowLeft, Instagram, Facebook } from 'lucide-react';
 import Card from './components/ui/card/Card';
 import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
@@ -287,6 +287,24 @@ const HealthWebsite = () => {
               </a>
               <div style={styles.appointmentInfo}>
                 <span style={styles.heroHomeVisit}>🏠 Home visits available across Grand Cayman</span>
+                <div style={styles.socialLinks}>
+                  <a 
+                    href="https://www.instagram.com/islandcarehealthphysio/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={styles.socialLink}
+                  >
+                    <Instagram size={18} />
+                  </a>
+                  <a 
+                    href="https://www.facebook.com/people/Island-Care-Health-Boutique-Physiotherapy/100064244141220/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={styles.socialLink}
+                  >
+                    <Facebook size={18} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -1578,6 +1596,60 @@ const styles = {
     fontSize: '0.875rem',
     marginTop: '0.5rem',
     textAlign: 'center',
+  },
+  socialIconsFloat: {
+    position: 'absolute',
+    right: '2rem',
+    bottom: '7rem',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.75rem',
+    zIndex: 30,
+    '@media (max-width: 768px)': {
+      right: '1.5rem',
+      bottom: '6rem',
+    },
+  },
+  socialIconFloat: {
+    color: '#2D3748',
+    backgroundColor: '#ffffff',
+    transition: 'all 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    cursor: 'pointer',
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.15)',
+    border: '1px solid rgba(0, 0, 0, 0.1)',
+    '&:hover': {
+      transform: 'translateY(-2px)',
+      boxShadow: '0 6px 15px rgba(0, 0, 0, 0.2)',
+      backgroundColor: '#e53e3e',
+      color: '#ffffff',
+      border: '1px solid #e53e3e',
+    },
+  },
+  socialLinks: {
+    display: 'flex',
+    gap: '1rem',
+    marginTop: '0.75rem',
+    justifyContent: 'center',
+  },
+  socialLink: {
+    color: '#4A5568',
+    transition: 'all 0.2s ease',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    padding: '0.35rem',
+    borderRadius: '0.25rem',
+    '&:hover': {
+      color: '#e53e3e',
+      transform: 'translateY(-1px)',
+    },
   },
 };
 
