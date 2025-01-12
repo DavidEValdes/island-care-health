@@ -578,6 +578,11 @@ const HealthWebsite = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer style={styles.footer}>
+        <p style={styles.footerText}>© {new Date().getFullYear()} Island Care Health. All Rights Reserved.</p>
+      </footer>
     </div>
   );
 };
@@ -1660,6 +1665,20 @@ const styles = {
     '&:hover': {
       color: '#e53e3e',
       transform: 'translateY(-1px)',
+    },
+  },
+  footer: {
+    backgroundColor: '#f9fafb',
+    padding: '1.5rem',
+    textAlign: 'center',
+    borderTop: '1px solid #e2e8f0',
+  },
+  footerText: {
+    color: '#4A5568',
+    fontSize: '0.875rem',
+    letterSpacing: '0.025em',
+    '@media (max-width: 380px)': {
+      fontSize: '0.8rem',
     },
   },
 };
