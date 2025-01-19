@@ -21,6 +21,23 @@ styleSheet.textContent = `
       height: 14px !important;
     }
   }
+  
+  /* Fix for in-app browsers */
+  @media screen and (max-width: 768px) {
+    nav {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 1000 !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      background-color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .nav-book-button {
+      transform: none !important;
+      transition: background-color 0.2s ease !important;
+    }
+  }
 `;
 document.head.appendChild(styleSheet);
 
@@ -217,9 +234,22 @@ const HealthWebsite = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={{
+      ...styles.container,
+      WebkitOverflowScrolling: 'touch',
+      overflowX: 'hidden'
+    }}>
       {/* Navigation */}
-      <nav style={styles.nav}>
+      <nav style={{
+        ...styles.nav,
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000,
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+      }}>
         <div style={styles.navLeft}>
           <img src={logo} alt="Island Care Health" style={styles.navLogo} />
         </div>
@@ -681,20 +711,20 @@ const styles = {
   },
   heroSection: {
     position: 'relative',
-    minHeight: '100vh',
+    height: 'auto',
+    minHeight: 'calc(100vh - 80px)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
     background: 'linear-gradient(to bottom right, #f9fafb, #ffffff)',
-    padding: '0 1.5rem',
+    padding: '40px 1.5rem',
     textAlign: 'center',
-    paddingTop: '100px',
     '@media (min-width: 768px)': {
-      padding: '120px 1.5rem 4rem',
+      padding: '60px 1.5rem 4rem',
+      minHeight: 'calc(100vh - 80px)',
     },
     '@media (max-width: 380px)': {
-      padding: '90px 1rem 2rem',
+      padding: '30px 1rem 2rem',
       minHeight: 'calc(100vh - 60px)',
     },
   },
@@ -718,15 +748,15 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
     width: '100%',
-    flex: 1,
+    paddingTop: '20px',
     '@media (min-width: 768px)': {
       maxWidth: '768px',
+      paddingTop: '40px',
     },
     '@media (max-width: 380px)': {
       maxWidth: '100%',
-      padding: '1rem 0',
+      paddingTop: '10px',
     },
   },
   heroTextBubble: {
