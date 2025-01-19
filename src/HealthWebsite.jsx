@@ -11,6 +11,17 @@ import emailjs from '@emailjs/browser';
 
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
+  @media (max-width: 360px) {
+    .nav-book-button {
+      font-size: 0.8rem !important;
+      padding: 0.35rem 0.75rem !important;
+    }
+    .nav-book-button svg {
+      width: 16px !important;
+      height: 16px !important;
+    }
+  }
+  
   @media (max-width: 330px) {
     .nav-book-button {
       font-size: 0.7rem !important;
@@ -617,11 +628,11 @@ const styles = {
     fontFamily: 'Arial, sans-serif',
   },
   nav: {
-    position: 'fixed',
+    position: 'sticky',
     top: '0',
     left: '0',
     right: '0',
-    zIndex: '50',
+    zIndex: '1000',
     backgroundColor: '#ffffff',
     borderBottom: '2px solid #e53e3e',
     padding: '0.75rem 1.5rem',
@@ -631,7 +642,7 @@ const styles = {
     height: '80px',
     '@media (max-width: 380px)': {
       padding: '0.5rem 1rem',
-      height: '60px',
+      height: '70px',
     },
   },
   navLeft: {
@@ -644,8 +655,8 @@ const styles = {
     height: '75px',
     width: 'auto',
     objectFit: 'contain',
-    '@media (max-width: 376px)': {
-      height: '55px',
+    '@media (max-width: 380px)': {
+      height: '60px',
     },
   },
   navRight: {
@@ -653,11 +664,8 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '0.25rem',
-    '@media (min-width: 768px)': {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: '1rem',
-    },
+    justifyContent: 'center',
+    height: '100%',
   },
   navLink: {
     fontSize: '0.75rem',
@@ -695,13 +703,9 @@ const styles = {
     justifyContent: 'center',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     fontSize: '0.9rem',
-    '@media (max-width: 376px)': {
+    '@media (max-width: 380px)': {
       fontSize: '0.85rem',
       padding: '0.4rem 0.9rem',
-    },
-    '@media (max-width: 330px)': {
-      fontSize: '0.75rem',
-      padding: '0.35rem 0.7rem',
     },
   },
   heroButtonIcon: {
