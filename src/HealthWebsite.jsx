@@ -134,31 +134,6 @@ const HealthWebsite = () => {
         "Workplace ergonomic optimization and consulting",
         "Healthcare facility setup and improvement consulting"
       ]
-    },
-    {
-      name: "Visani Wijesiriwardana",
-      title: "Physiotherapist",
-      shortDescription: "Expert in comprehensive physiotherapy with specialized focus on musculoskeletal rehabilitation and sports therapy.",
-      focus: "Comprehensive rehabilitation & sports therapy",
-      credentials: "BSc(Hons), Dip. Exercise & Sports Sciences, HCPC, CPAM, SLMC",
-      education: "BSc(Hons) in Physiotherapy, Diploma in Exercise & Sports Sciences",
-      expertise: [
-        "Musculoskeletal & Neurological Rehabilitation",
-        "Sports Physiotherapy",
-        "Cardiorespiratory Rehabilitation",
-        "Pediatric and Geriatric Physiotherapy",
-        "Home Visit Physiotherapy",
-        "Neurac Method™ Therapy"
-      ],
-      detailedDescription: [
-        "Manual Therapy including IASTM, Cupping, and Trigger point dry needling",
-        "Therapeutic exercises and Neurac Method™ for pain-free motion",
-        "Cardiorespiratory care and rehabilitation",
-        "Sports Injury management and Rehabilitation",
-        "Post-Surgical Physiotherapy Management",
-        "Exercise and Wellness Programs",
-        "Ergonomic Assessment & Workplace Design"
-      ]
     }
   ];
 
@@ -363,16 +338,23 @@ const HealthWebsite = () => {
       {/* Clinicians Section */}
       <section id="clinicians-section" style={styles.cliniciansSection}>
         <div style={styles.cliniciansHeader}>
-          <h2 style={styles.cliniciansTitle}>Our Expert Clinicians</h2>
+          <h2 style={styles.cliniciansTitle}>Our Expert Clinician</h2>
           <p style={styles.cliniciansSubtitle}>
-            Dedicated professionals committed to your recovery and well-being
+            Dedicated professional committed to your recovery and well-being
           </p>
         </div>
-        <div style={styles.cliniciansGrid}>
+        <div style={{
+          ...styles.cliniciansGrid,
+          justifyContent: 'center', 
+          display: 'flex',
+        }}>
           {clinicians.map((clinician, index) => (
             <div 
               key={index} 
-              style={styles.clinicianCardContainer}
+              style={{
+                ...styles.clinicianCardContainer,
+                maxWidth: '350px',
+              }}
               onClick={() => {
                 setFlippedCards(prev => {
                   if (prev.includes(index)) {
@@ -938,7 +920,7 @@ const styles = {
       flexDirection: 'column',
       alignItems: 'center',
       gap: '1.5rem',
-      maxWidth: '250px',
+      maxWidth: '280px',
       margin: '0 auto',
       padding: '0',
     },
