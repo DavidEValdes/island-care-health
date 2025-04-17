@@ -353,7 +353,13 @@ const HealthWebsite = () => {
               key={index} 
               style={{
                 ...styles.clinicianCardContainer,
-                maxWidth: '350px',
+                maxWidth: '450px',
+                '@media (max-width: 768px)': {
+                  maxWidth: '380px',
+                },
+                '@media (max-width: 380px)': {
+                  maxWidth: '280px',
+                },
               }}
               onClick={() => {
                 setFlippedCards(prev => {
@@ -882,6 +888,9 @@ const styles = {
   cliniciansSection: {
     padding: '2rem 1rem',
     backgroundColor: '#f7fafc',
+    '@media (min-width: 768px)': {
+      padding: '4rem 2rem',
+    },
   },
   cliniciansHeader: {
     textAlign: 'center',
@@ -902,6 +911,9 @@ const styles = {
     letterSpacing: '-0.025em',
     color: '#1a202c',
     marginBottom: '1rem',
+    '@media (min-width: 768px)': {
+      fontSize: '3rem',
+    },
   },
   cliniciansSubtitle: {
     fontSize: '1rem',
@@ -1140,6 +1152,9 @@ const styles = {
     position: 'relative',
     borderTopLeftRadius: '2rem',
     borderTopRightRadius: '2rem',
+    '@media (min-width: 1024px)': {
+      height: '400px',
+    },
     '@media (max-width: 768px)': {
       height: '300px',
     },
@@ -1172,6 +1187,10 @@ const styles = {
     width: '100%',
     textAlign: 'center',
     marginBottom: '0.25rem',
+    '@media (min-width: 1024px)': {
+      fontSize: '1.75rem',
+      marginBottom: '0.5rem',
+    },
   },
   clinicianCredentials: {
     fontSize: '0.75rem',
@@ -1182,6 +1201,10 @@ const styles = {
     width: '100%',
     textAlign: 'center',
     marginBottom: '0.25rem',
+    '@media (min-width: 1024px)': {
+      fontSize: '0.85rem',
+      marginBottom: '0.5rem',
+    },
   },
   clinicianTitle: {
     fontSize: '1rem',
@@ -1191,6 +1214,10 @@ const styles = {
     width: '100%',
     textAlign: 'center',
     marginBottom: '0.25rem',
+    '@media (min-width: 1024px)': {
+      fontSize: '1.25rem',
+      marginBottom: '0.5rem',
+    },
   },
   clinicianFocus: {
     fontSize: '0.9rem',
@@ -1200,6 +1227,10 @@ const styles = {
     width: '100%',
     textAlign: 'center',
     marginBottom: '0.5rem',
+    '@media (min-width: 1024px)': {
+      fontSize: '1.1rem',
+      marginBottom: '0.75rem',
+    },
   },
   clinicianDescription: {
     fontSize: '0.875rem',
@@ -1208,6 +1239,11 @@ const styles = {
     maxWidth: '90%',
     margin: '0 auto',
     textAlign: 'center',
+    '@media (min-width: 1024px)': {
+      fontSize: '1rem',
+      lineHeight: '1.6',
+      maxWidth: '85%',
+    },
   },
   clinicianLearnMore: {
     display: 'flex',
