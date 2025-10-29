@@ -122,13 +122,13 @@ const HealthWebsite = () => {
       education: "Double degree in Physical Therapy and Health Education - Florida International University (1999)",
       expertise: [
         "Musculoskeletal & Neurological Rehabilitation",
-        "Neurac Method™ Therapy",
+        "Redcord Therapy using the Neurac Method.",
         "Ergonomic Assessment & Workplace Design",
         "Home Visit Physiotherapy",
         "Healthcare Management & Consulting"
       ],
       detailedDescription: [
-        "Specialized therapeutic exercise using the Neurac Method™ for pain-free motion",
+        "Specialized therapeutic exercise with Redcord equipment using the Neurac Method.",
         "Expert in biomechanics and occupational movement assessment",
         "Customized home visit programs for limited mobility patients",
         "Workplace ergonomic optimization and consulting",
@@ -144,7 +144,7 @@ const HealthWebsite = () => {
       icon: "🦾"
     },
     {
-      title: "Neurac Method™ Therapy",
+      title: "Redcord Clinic: Therapeutic exercise on the Redcord station using the Neurac Method.",
       description: "Advanced treatment focusing on restoring functional and pain-free movement patterns through high-level neuromuscular ",
       descriptionHighlight: "Neurac Method™",
       descriptionEnd: " activation, targeting root causes rather than just symptoms.",
