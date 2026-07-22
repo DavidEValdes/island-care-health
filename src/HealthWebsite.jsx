@@ -140,7 +140,7 @@ const HealthWebsite = () => {
       image: prasathSivakumar,
       name: "Prasath Sivakumar",
       title: "Geriatric Physiotherapist",
-      shortDescription: "Specialized in geriatric rehabilitation, Parkinson's rehabilitation, musculoskeletal care, sports injury rehabilitation, cardiac rehab, and advanced pelvic rehabilitation techniques.",
+      shortDescription: "Specialized in geriatric rehabilitation, Parkinson's rehabilitation, musculoskeletal care, sports injury rehabilitation, and advanced pelvic rehabilitation techniques.",
       focus: "Restoring movement & empowering every step",
       credentials: "BPT, MPT (Geriatrics), FRCPT",
       education: "Bachelor of Physiotherapy (BPT) and Master of Physiotherapy in Geriatrics (MPT), FRCPT",
@@ -155,7 +155,7 @@ const HealthWebsite = () => {
       ],
       detailedDescription: [
         "Advanced therapeutic exercise for the geriatric population",
-        "Parkinson's rehab for mobility, balance, gait & functional training",
+        "Parkinson's rehabilitation for mobility, balance, gait & functional training",
         "Pelvic rehabilitation for men, pre & post prostate surgery",
         "Dry needling, cupping therapy & kinesiology taping",
         "Home-based rehabilitation & caregiver training"
