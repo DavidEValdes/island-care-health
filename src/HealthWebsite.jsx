@@ -6,7 +6,7 @@ import Button from './components/ui/button/Button';
 import heroBackground from './assets/hero-background.jpg';
 import logo from './assets/logo.jpg';
 import lisaCummins from './assets/lisa-cummins.avif';
-import visaniImage from './assets/image.png';
+import prasathSivakumar from './assets/prasath-sivakumar.jpg';
 import emailjs from '@emailjs/browser';
 
 const styleSheet = document.createElement('style');
@@ -114,6 +114,7 @@ const HealthWebsite = () => {
 
   const clinicians = [
     {
+      image: lisaCummins,
       name: "Lisa Cummins",
       title: "Physiotherapist",
       shortDescription: "Specialized in musculoskeletal rehabilitation and advanced therapeutic exercise techniques for optimal recovery.",
@@ -134,6 +135,31 @@ const HealthWebsite = () => {
         "Workplace ergonomic optimization and consulting",
         "Healthcare facility setup and improvement consulting"
       ]
+    },
+    {
+      image: prasathSivakumar,
+      name: "Prasath Sivakumar",
+      title: "Geriatric Physiotherapist",
+      shortDescription: "Specialized in geriatric rehabilitation, Parkinson's rehabilitation, musculoskeletal care, sports injury rehabilitation, cardiac rehab, and advanced pelvic rehabilitation techniques.",
+      focus: "Restoring movement & empowering every step",
+      credentials: "BPT, MPT (Geriatrics), FRCPT",
+      education: "Bachelor of Physiotherapy (BPT) and Master of Physiotherapy in Geriatrics (MPT), FRCPT",
+      expertise: [
+        "Geriatric & Neurological Rehabilitation",
+        "Parkinson's Disease Management",
+        "Musculoskeletal & Sports Injury Rehabilitation",
+        "Post-Surgical Rehabilitation",
+        "Pain Management & Manual Therapy",
+        "Pelvic Floor Rehabilitation",
+        "Fall Prevention & Balance Training"
+      ],
+      detailedDescription: [
+        "Advanced therapeutic exercise for the geriatric population",
+        "Parkinson's rehab for mobility, balance, gait & functional training",
+        "Pelvic rehabilitation for men, pre & post prostate surgery",
+        "Dry needling, cupping therapy & kinesiology taping",
+        "Home-based rehabilitation & caregiver training"
+      ]
     }
   ];
 
@@ -144,7 +170,8 @@ const HealthWebsite = () => {
       icon: "🦾"
     },
     {
-      title: "Redcord Clinic: Therapeutic exercise on the Redcord station using the Neurac Method.",
+      title: "Redcord Clinic",
+      subtitle: "Therapeutic exercise on the Redcord station using the Neurac Method",
       description: "Advanced treatment focusing on restoring functional and pain-free movement patterns through high-level neuromuscular ",
       descriptionHighlight: "Neurac Method™",
       descriptionEnd: " activation, targeting root causes rather than just symptoms.",
@@ -338,15 +365,16 @@ const HealthWebsite = () => {
       {/* Clinicians Section */}
       <section id="clinicians-section" style={styles.cliniciansSection}>
         <div style={styles.cliniciansHeader}>
-          <h2 style={styles.cliniciansTitle}>Our Expert Clinician</h2>
+          <h2 style={styles.cliniciansTitle}>Our Expert Clinicians</h2>
           <p style={styles.cliniciansSubtitle}>
-            Dedicated professional committed to your recovery and well-being
+            Dedicated professionals committed to your recovery and well-being
           </p>
         </div>
         <div style={{
           ...styles.cliniciansGrid,
-          justifyContent: 'center', 
+          justifyContent: 'center',
           display: 'flex',
+          flexWrap: 'wrap',
         }}>
           {clinicians.map((clinician, index) => (
             <div 
@@ -383,7 +411,7 @@ const HealthWebsite = () => {
                 }}>
                   <div style={styles.clinicianImageContainer}>
                     <img
-                      src={index === 0 ? lisaCummins : visaniImage}
+                      src={clinician.image}
                       alt={clinician.name}
                       style={styles.clinicianImage}
                     />
@@ -459,6 +487,14 @@ const HealthWebsite = () => {
             >
               <div style={styles.serviceIcon}>{service.icon}</div>
               <h3 style={styles.serviceTitle}>{service.title}</h3>
+              {service.subtitle && (
+                <p 
+                  style={{
+                    ...styles.serviceSubtitle,
+                    ...(hoveredService === index ? styles.serviceSubtitleHover : {})
+                  }}
+                >{service.subtitle}</p>
+              )}
               <p style={styles.serviceDescription}>
                 {service.description}
                 {service.descriptionHighlight && (
@@ -1342,11 +1378,28 @@ const styles = {
     width: '35px',
   },
   serviceTitle: {
-    fontSize: '1.1rem',
-    fontWeight: '500',
+    fontSize: '1.2rem',
+    fontWeight: '600',
     color: '#1a202c',
-    marginBottom: '0.25rem',
+    marginBottom: '0.15rem',
     width: '100%',
+  },
+  serviceSubtitle: {
+    fontSize: '0.9rem',
+    fontWeight: '400',
+    color: '#4a5568',
+    marginBottom: '0.5rem',
+    width: '100%',
+    fontStyle: 'italic',
+    lineHeight: '1.3',
+    transition: 'all 0.2s ease-in-out',
+    padding: '0.2rem 0.5rem',
+    borderRadius: '4px',
+    margin: '-0.2rem -0.5rem 0.5rem -0.5rem',
+  },
+  serviceSubtitleHover: {
+    backgroundColor: 'rgba(229, 62, 62, 0.1)',
+    color: '#e53e3e',
   },
   serviceDescription: {
     fontSize: '0.875rem',
